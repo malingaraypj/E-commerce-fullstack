@@ -1,12 +1,16 @@
-import { Button } from "./components/ui/button";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import LandingPage from "./pages/Landing.page";
+import NavBarWrapper from "./components/Nav/NavBarWrapper";
 
 function App() {
-  return (
-    <div className="font-bold">
-      Hello World
-      <Button variant="link">Click me</Button>
-    </div>
-  );
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <NavBarWrapper />,
+      children: [{ index: true, element: <LandingPage /> }],
+    },
+  ]);
+  return <RouterProvider router={router} />;
 }
 
 export default App;
