@@ -1,79 +1,19 @@
 import React from "react";
 import ItemCard from "./ItemCard";
-
-interface Item {
-  image: string;
-  title: string;
-  description: string;
-  price: string;
-}
+import { dummyProducts } from "@/data/product";
+import type { Product } from "@/models/product";
 
 type Category = {
   name: string;
-  data: Item[];
+  data: Product[];
 };
 
 type CategoryCardsProps = {
   category: Category;
 };
 
-const dummyData: Item[] = [
-  {
-    image: "https://via.placeholder.com/150",
-    title: "Sample Item",
-    description: "This is a sample item description.",
-    price: "$19.99",
-  },
-  {
-    image: "https://via.placeholder.com/150",
-    title: "Sample Item",
-    description: "This is a sample item description.",
-    price: "$20",
-  },
-  {
-    image: "https://via.placeholder.com/150",
-    title: "Sample Item",
-    description: "This is a sample item description.",
-    price: "$19.99",
-  },
-  {
-    image: "https://via.placeholder.com/150",
-    title: "Sample Item",
-    description: "This is a sample item description.",
-    price: "$20",
-  },
-  {
-    image: "https://via.placeholder.com/150",
-    title: "Sample Item",
-    description: "This is a sample item description.",
-    price: "$19.99",
-  },
-  {
-    image: "https://via.placeholder.com/150",
-    title: "Sample Item",
-    description: "This is a sample item description.",
-    price: "$20",
-  },
-  {
-    image: "https://via.placeholder.com/150",
-    title: "Sample Item",
-    description: "This is a sample item description.",
-    price: "$19.99",
-  },
-  {
-    image: "https://via.placeholder.com/150",
-    title: "Sample Item",
-    description: "This is a sample item description.",
-    price: "$20",
-  },
-];
-
 const CategoryCards: React.FC<CategoryCardsProps> = ({ category }) => {
-  const items =
-    category.data.length > 0
-      ? category.data.filter((_, idx) => idx < 4)
-      : dummyData;
-
+  const items = category.data.length ? category.data : dummyProducts;
   return (
     <div className="flex flex-col gap-6 bg-blue-400 items-center p-6 rounded-lg">
       {/* Title */}
