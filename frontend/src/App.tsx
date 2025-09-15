@@ -1,13 +1,17 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LandingPage from "./pages/Landing.page";
 import NavBarWrapper from "./components/Nav/NavBarWrapper";
+import ProductDetails from "./pages/productDetails";
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
       element: <NavBarWrapper />,
-      children: [{ index: true, element: <LandingPage /> }],
+      children: [
+        { index: true, element: <LandingPage /> },
+        { path: "product/:id", element: <ProductDetails /> },
+      ],
     },
   ]);
   return <RouterProvider router={router} />;

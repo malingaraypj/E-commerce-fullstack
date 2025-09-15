@@ -6,8 +6,6 @@ export interface Review {
   id: string;
   productId: string;
   userId: string;
-
-  // User display info (to avoid JOINs on the frontend)
   user: {
     id: string;
     firstName: string;
@@ -15,10 +13,10 @@ export interface Review {
     profileImage?: string;
     email?: string;
   };
-
-  // Metadata
-  createdAt: string; // ISO date string
-  updatedAt?: string; // ISO date string, if edited
+  createdAt: string;
+  updatedAt?: string;
+  comment?: string; // Add this
+  rating?: number; // Add this
 }
 
 // Summary of reviews for a product

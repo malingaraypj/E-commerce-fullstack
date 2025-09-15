@@ -34,7 +34,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ data }) => {
 
         {/* Badges */}
         {data.badges && (
-          <div className="absolute top-2 left-2 flex gap-2 z-10">
+          <div className="absolute top-0 left-2 flex gap-2 z-10">
             {data.badges.map((badge, idx) => (
               <span
                 key={idx}
@@ -47,23 +47,22 @@ const ItemCard: React.FC<ItemCardProps> = ({ data }) => {
         )}
       </div>
 
-      {/* Card Header */}
-      <CardHeader className="p-4">
-        {data.brand && (
-          <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">
-            {data.brand}
-          </p>
-        )}
-        <CardTitle className="text-lg font-semibold text-gray-800">
-          {data.name}
-        </CardTitle>
-        <CardDescription className="text-sm text-gray-500 line-clamp-2">
-          {data.description}
-        </CardDescription>
-      </CardHeader>
-
       {/* Card Content */}
       <CardContent className="p-4 pt-0">
+        {/* Card Header */}
+        <CardHeader className="p-4">
+          {data.brand && (
+            <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">
+              {data.brand}
+            </p>
+          )}
+          <CardTitle className="text-lg font-semibold text-gray-800">
+            {data.name}
+          </CardTitle>
+          <CardDescription className="text-sm text-gray-500 line-clamp-2">
+            {data.description}
+          </CardDescription>
+        </CardHeader>
         {/* Price + Discount */}
         <div className="flex items-center gap-2 mb-2">
           <p className="text-xl font-bold text-blue-600">
