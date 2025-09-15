@@ -1,12 +1,9 @@
 import express from "express";
 import globalErrorHandler from "./utils/globalErrorHandler.js";
+import UserRoutes from "./routes/user.routes.js";
 const app = express();
 
-app.get("/", async (req, res) => {
-  res.json({
-    status: "success",
-  });
-});
+app.use("/api/v1/user", UserRoutes);
 
 // Catch-all for invalid paths
 app.use((req, res, next) => {
