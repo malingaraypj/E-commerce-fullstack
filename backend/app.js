@@ -2,6 +2,9 @@ import express from "express";
 import globalErrorHandler from "./utils/globalErrorHandler.js";
 const app = express();
 
+// style parsing so req.query turns "stock[gt]=15" into { stock: { gt: 15 } }
+app.set("query parser", "extended");
+
 // Routes import
 import UserRoutes from "./routes/user.routes.js";
 import authRoutes from "./routes/auth.routes.js";

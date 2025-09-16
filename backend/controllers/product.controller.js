@@ -1,3 +1,5 @@
+import getAllFactory from "../factory/getAllFactory.js";
+import Product from "../models/Product.js";
 import { addNewProductService } from "../services/product.service.js";
 import catchAsync from "./../utils/catchAsync.js";
 
@@ -10,3 +12,8 @@ export const addNewProduct = catchAsync(async (req, res, next) => {
     data: newProduct,
   });
 });
+
+export const getAllProducts = async (req, res, next) => {
+  const factory = getAllFactory(Product);
+  return factory(req, res, next);
+};
