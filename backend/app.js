@@ -5,6 +5,7 @@ const app = express();
 // Routes import
 import UserRoutes from "./routes/user.routes.js";
 import authRoutes from "./routes/auth.routes.js";
+import productRoutes from "./routes/product.routes.js";
 
 // middlewares
 app.use(express.json());
@@ -12,6 +13,7 @@ app.use(express.json());
 // route path
 app.use("/api/v1/user", UserRoutes);
 app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/product", productRoutes);
 
 // Catch-all for invalid paths
 app.use((req, res, next) => {
