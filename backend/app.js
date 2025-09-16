@@ -9,6 +9,7 @@ app.set("query parser", "extended");
 import UserRoutes from "./routes/user.routes.js";
 import authRoutes from "./routes/auth.routes.js";
 import productRoutes from "./routes/product.routes.js";
+import ReviewRouts from "./routes/review.route.js";
 
 // middlewares
 app.use(express.json());
@@ -17,6 +18,7 @@ app.use(express.json());
 app.use("/api/v1/user", UserRoutes);
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/product", productRoutes);
+app.use("/api/v1/review", ReviewRouts);
 
 // Catch-all for invalid paths
 app.use((req, res, next) => {

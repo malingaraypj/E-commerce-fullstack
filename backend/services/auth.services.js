@@ -27,7 +27,7 @@ export const createUserService = async (userData) => {
     name: userData.name,
     email: userData.email,
     password: userData.password,
-    role: userData.role ? userData.role : "user",
+    role: userData.role ? userData.role : "customer",
   });
   const token = signToken(newUser._id);
   return { newUser, token };

@@ -59,6 +59,7 @@ productSchema.virtual("reviewCount", {
   ref: "Review",
   foreignField: "product",
   localField: "_id",
+  count: true,
 });
 
 export default mongoose.model("Product", productSchema);

@@ -29,6 +29,8 @@ const userSchema = new mongoose.Schema(
       type: String,
       enum: ["customer", "seller", "admin"],
       default: "customer",
+      select: false,
+      message: "role is either: customer, seller, admin",
     },
   },
   {
