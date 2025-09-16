@@ -24,6 +24,23 @@ const reviewSchema = new mongoose.Schema(
       min: [1, "Rating must be at least 1"],
       max: [5, "Rating cannot exceed 5"],
     },
+    responses: [
+      {
+        user: {
+          type: mongoose.Types.ObjectId,
+          ref: "User",
+        },
+        message: {
+          type: String,
+          trim: true,
+          required: [true, "a response shouldn't be empty"],
+        },
+        createdAt: {
+          type: Date,
+          default: Date.now,
+        },
+      },
+    ],
   },
   {
     timestamps: true,

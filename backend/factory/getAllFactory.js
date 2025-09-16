@@ -3,8 +3,9 @@ import ApiFeatures from "../utils/apiFeatures.js";
 
 const getAllFactory = (Model, option = {}) => {
   return catcyAsync(async (req, res, next) => {
-    let query = Model.find();
+    let query = Model.find(option.filter);
     if (option.populate) query = query.populate(option.populate);
+
     const apiFeatures = new ApiFeatures(query, req.query)
       .filter()
       .sort()

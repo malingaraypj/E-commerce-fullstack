@@ -33,3 +33,38 @@ export const createReviewService = async (reviewData, userId, productId) => {
   });
   return review;
 };
+
+export const createReviewResponseService = async (
+  userId,
+  reviewId,
+  message
+) => {
+  if (!userId || !reviewId || !message) {
+    throw new AppError("Invalid details provided", 400);
+  }
+
+  //  Check if user exists
+  const userExists = await User.exists({ _id: userId });
+  if (!userExists) throw new AppError("User doesn't exist", 404);
+
+  //  Check if review exists
+  const reviewExists = await Review.exists({ _id: reviewId });
+  if (!reviewExists) throw new AppError("Review doesn't exist", 404);
+
+  //  Push response into review
+  const updatedReview = await Review.findByIdAndUpdate(
+    reviewId,
+    {
+      $push: {
+        responses: {
+          user: userId,
+          message: message,
+          createdAt: new Date(),
+        },
+      },
+    },
+    { new: true, runValidators: true }
+  ).populate("responses.user", "name email");
+
+  return updatedReview;
+};

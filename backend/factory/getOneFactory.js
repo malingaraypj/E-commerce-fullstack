@@ -1,4 +1,5 @@
 import catchAsync from "../utils/catchAsync.js";
+import AppError from "../utils/AppError.js";
 
 const getOneFactory = (Model, options = {}) => {
   return catchAsync(async (req, res, next) => {
