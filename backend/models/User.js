@@ -32,6 +32,23 @@ const userSchema = new mongoose.Schema(
       select: false,
       message: "role is either: customer, seller, admin",
     },
+    checkedProduct: [
+      {
+        Product: {
+          type: mongoose.Types.ObjectId,
+          ref: "Product",
+          required: true,
+        },
+        productCount: {
+          type: Number,
+          default: 0,
+        },
+        createdAt: {
+          type: Date,
+          default: Date.now,
+        },
+      },
+    ],
   },
   {
     timestamps: true,
