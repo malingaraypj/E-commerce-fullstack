@@ -11,16 +11,20 @@ import authRoutes from "./routes/auth.routes.js";
 import productRoutes from "./routes/product.routes.js";
 import ReviewRoutes from "./routes/review.route.js";
 import CustomerRoutes from "./routes/customer.router.js";
+import AdminRoutes from "./routes/admin.route.js";
 
 // middlewares
 app.use(express.json());
 
 // route path
-app.use("/api/v1/user", UserRoutes);
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/product", productRoutes);
 app.use("/api/v1/review", ReviewRoutes);
+
+// user routes
+app.use("/api/v1/user", UserRoutes);
 app.use("/api/v1/customer", CustomerRoutes);
+app.use("/api/v1/admin", AdminRoutes);
 
 // Catch-all for invalid paths
 app.use((req, res, next) => {

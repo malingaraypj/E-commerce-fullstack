@@ -1,3 +1,4 @@
+import User from "../models/User.js";
 import {
   addCheckoutService,
   getMyCheckoutService,
@@ -25,4 +26,8 @@ export const getMyCheckout = catchAsync(async (req, res, next) => {
     status: "success",
     data: result,
   });
+});
+
+export const applyForSeller = catchAsync(async (req, res, next) => {
+  const userId = req.user._id;
 });
