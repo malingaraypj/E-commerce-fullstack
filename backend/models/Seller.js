@@ -70,6 +70,14 @@ sellerSchema.pre("save", async function (next) {
   next();
 });
 
+sellerSchema.pre(/^findOne/, function (next) {
+  this.populate({
+    path: "user",
+    // select: "name email contactPhone",
+  });
+  next();
+});
+
 const Seller = mongoose.model("SellerApplication", sellerSchema);
 
 export default Seller;

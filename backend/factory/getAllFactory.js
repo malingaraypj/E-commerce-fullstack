@@ -16,6 +16,7 @@ const getAllFactory = (Model, option = {}) => {
 
     res.status(200).json({
       status: "success",
+      length: result.length,
       data: result,
     });
   });
