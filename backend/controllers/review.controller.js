@@ -1,5 +1,7 @@
+import { deleteOneFactory } from "../factory/deleteFactory.js";
 import getAllFactory from "../factory/getAllFactory.js";
 import getOneFactory from "../factory/getOneFactory.js";
+import { updateOneFactory } from "../factory/updateFactory.js";
 import Review from "../models/Review.js";
 import {
   createReviewResponseService,
@@ -27,7 +29,15 @@ export const getAllReviews = async (req, res, next) => {
   return factory(req, res, next);
 };
 
+export const reviewIdMiddleware = (req, res, next) => {
+  if (!req.params.id) req.params.id = req.params.reviewId;
+  console.log("middleware");
+  next();
+};
+
 export const getOneReview = getOneFactory(Review);
+export const updateOneReview = updateOneFactory(Review);
+export const deleteOneReview = deleteOneFactory(Review);
 
 export const respondToReview = catcyAsync(async (req, res, next) => {
   const userId = req.user._id;

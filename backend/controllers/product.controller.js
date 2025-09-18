@@ -1,5 +1,7 @@
+import { deleteOneFactory } from "../factory/deleteFactory.js";
 import getAllFactory from "../factory/getAllFactory.js";
 import getOneFactory from "../factory/getOneFactory.js";
+import { updateOneFactory } from "../factory/updateFactory.js";
 import Product from "../models/Product.js";
 import { addNewProductService } from "../services/product.service.js";
 import catchAsync from "./../utils/catchAsync.js";
@@ -26,3 +28,6 @@ export const getProduct = getOneFactory(Product, {
     { path: "reviewCount" },
   ],
 });
+
+export const updateOneProduct = updateOneFactory(Product);
+export const deteleOneProduct = deleteOneFactory(Product);
