@@ -6,11 +6,12 @@ const app = express();
 app.set("query parser", "extended");
 
 // Routes import
-import UserRoutes from "./routes/user.routes.js";
+// import UserRoutes from "./routes/user.routes.js";
 import authRoutes from "./routes/auth.routes.js";
 import productRoutes from "./routes/product.routes.js";
 import ReviewRoutes from "./routes/review.route.js";
 import CustomerRoutes from "./routes/customer.router.js";
+import SellerRoutes from "./routes/seller.routes.js";
 import AdminRoutes from "./routes/admin.route.js";
 
 // middlewares
@@ -22,7 +23,8 @@ app.use("/api/v1/product", productRoutes);
 app.use("/api/v1/review", ReviewRoutes);
 
 // user routes
-app.use("/api/v1/user", UserRoutes);
+// app.use("/api/v1/user", UserRoutes);
+app.use("/api/v1/seller", SellerRoutes);
 app.use("/api/v1/customer", CustomerRoutes);
 app.use("/api/v1/admin", AdminRoutes);
 
