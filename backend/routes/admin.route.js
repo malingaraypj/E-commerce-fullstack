@@ -10,7 +10,7 @@ import {
   getPendingSellerApplications,
 } from "../controllers/admin.controller.js";
 import { protect } from "../middleware/auth.middleware.js";
-import { adminProtect } from "../middleware/admin.middleware.js";
+import { restrictTo } from "../services/auth.services.js";
 import userRouter from "./user.routes.js";
 
 const Router = express.Router();
@@ -18,7 +18,7 @@ const Router = express.Router();
 Router.use("/users/:id", userRouter);
 
 Router.use(protect);
-Router.use(adminProtect);
+Router.use(restrictTo("admin"));
 
 Router.get("/users", getAllUsers);
 
