@@ -15,12 +15,12 @@ import userRouter from "./user.routes.js";
 
 const Router = express.Router();
 
+Router.use("/users/:id", userRouter);
+
 Router.use(protect);
 Router.use(adminProtect);
 
-Router.use("/user", userRouter);
-
-Router.get("/getAllUsers", getAllUsers);
+Router.get("/users", getAllUsers);
 
 // get seller applications
 Router.get("/sellerApplications", getAllApplication);

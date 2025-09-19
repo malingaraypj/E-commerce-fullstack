@@ -7,6 +7,6 @@ import { getOneUser } from "../controllers/admin.controller.js";
 
 const router = express.Router({ mergeParams: true });
 
-router.route("/:id").patch(updateOneUser).get(getOneUser).delete(deleteOneUser);
+router.route("/").patch(updateOneUser).get(getOneUser).delete(deleteOneUser);
 
 export default router;

@@ -25,6 +25,9 @@ const userSchema = new mongoose.Schema(
       trim: true,
       select: false, // don't send password in queries by default
     },
+    passwordChangedAt: {
+      type: Date,
+    },
     role: {
       type: String,
       enum: ["customer", "seller", "admin"],
@@ -67,6 +70,20 @@ userSchema.pre("save", async function (next) {
 // Instance method for comparing password
 userSchema.methods.comparePassword = async function (candidatePassword) {
   return await bcrypt.compare(candidatePassword, this.password);
+};
+
+userSchema.methods.isPasswordChanged = function (jwtIat) {
+  if (this.passwordChangedAt) {
+    const passwordChangedTimestamp = parseInt(
+      this.passwordChangedAt.getTime() / 1000,
+      10
+    );
+
+    // Return true if password changed AFTER token was issued
+    return passwordChangedTimestamp > jwtIat;
+  }
+
+  return false;
 };
 
 const User = mongoose.models.User || mongoose.model("User", userSchema);

@@ -16,6 +16,11 @@ const handleValidationErrorDB = (err) => {
   return new AppError(message, 400);
 };
 
+const handleTokenExpiredError = () =>
+  new AppError("Token expired, please login again", 401);
+const handleJsonWebTokenError = () =>
+  new AppError("Invalid token, please login again", 401);
+
 const handleDevelopment = (err, req, res, next) => {
   err.statusMessage = err.statusMessage || "Internal server error";
 
@@ -31,6 +36,8 @@ const handleProduction = (err, req, res, next) => {
   if (err.name === "CastError") err = handleCastErrorDB(err);
   if (err.code === 11000) err = handleDuplicateFieldsDB(err);
   if (err.name === "ValidationError") err = handleValidationErrorDB(err);
+  if (err.name === "TokenExpiredError") err = handleTokenExpiredError();
+  if (err.name === "JsonWebTokenError") err = handleJsonWebTokenError();
 
   res.status(err.statusCode).json({
     success: false,
