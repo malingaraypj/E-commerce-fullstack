@@ -18,10 +18,9 @@ const Router = express.Router();
 Router.use("/users/:id", userRouter);
 
 Router.use(protect);
-Router.use(restrictTo("admin"));
-
 Router.get("/users", getAllUsers);
 
+Router.use(restrictTo("admin"));
 // get seller applications
 Router.get("/sellerApplications", getAllApplication);
 Router.get("/sellerApplications/approved", getApprovedSellerApplications);

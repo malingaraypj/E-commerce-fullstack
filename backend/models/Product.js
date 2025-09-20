@@ -23,6 +23,18 @@ const productSchema = new mongoose.Schema(
     },
     category: {
       type: String,
+      enum: [
+        "electronics",
+        "clothing",
+        "home",
+        "sports",
+        "books",
+        "grocery",
+        "mobile",
+        "fashion",
+        "books",
+        "toys",
+      ],
       trim: true,
     },
     stock: {
@@ -40,6 +52,11 @@ const productSchema = new mongoose.Schema(
       min: 0,
       max: 5,
     },
+    images: [
+      {
+        type: String,
+      },
+    ],
   },
   {
     timestamps: true,

@@ -10,10 +10,6 @@ import catchAsync from "../utils/catchAsync.js";
 
 export const getAllUsers = getAllFactory(User);
 
-export const getOneUser = getOneFactory(User, {
-  populate: [{ path: "checkedProduct.Product" }],
-});
-
 // get applications
 export const getAllApplication = getAllFactory(Seller);
 export const getOneApplication = getOneFactory(Seller);

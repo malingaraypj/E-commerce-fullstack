@@ -27,3 +27,9 @@ export const addNewProductService = async (productData) => {
 
   return newProduct;
 };
+
+// export const productOwner = async (req, res, next) => {
+//   // check if it has id specified
+
+//   next();
+// };
