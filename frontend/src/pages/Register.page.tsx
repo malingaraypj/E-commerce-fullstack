@@ -2,7 +2,6 @@ import SubmitButton from "@/components/Global/SubmitButton";
 import { Button } from "@/components/ui/button";
 import {
   Card,
-  CardAction,
   CardContent,
   CardDescription,
   CardFooter,
@@ -14,15 +13,22 @@ import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { useActionState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
+// api functions
+import { registerUser } from "@/api/auth";
+import { motion } from "framer-motion";
 
 type FormState = {
   enteredValues: {
+    name: string;
     email: string;
     password: string;
     "confirm-password": string;
   };
   error: string;
 };
+const MotionCard = motion(Card);
 
 function RegisterPage() {
   const navigation = useNavigate();
@@ -36,20 +42,53 @@ function RegisterPage() {
     const email = (formData.get("email") as string) ?? "";
     const password = (formData.get("password") as string) ?? "";
     const confirmPassword = (formData.get("confirm-password") as string) ?? "";
+    const name = (formData.get("name") as string) ?? "";
 
     // Basic validation
     if (password !== confirmPassword) {
       return {
         ...prevState,
         error: "Passwords do not match",
-        enteredValues: { email, password, "confirm-password": confirmPassword },
+        enteredValues: {
+          name,
+          email,
+          password: "",
+          "confirm-password": "",
+        },
+      };
+    }
+
+    try {
+      await registerUser({ name, email, password });
+      navigation("/login");
+    } catch (error) {
+      console.log(error);
+      let errorMessage = "Registration failed";
+
+      if (axios.isAxiosError(error)) {
+        errorMessage = error.response?.data?.message;
+      }
+      return {
+        ...prevState,
+        error: errorMessage,
+        enteredValues: {
+          name,
+          email,
+          password,
+          "confirm-password": confirmPassword,
+        },
       };
     }
 
     return {
       ...prevState,
       error: "",
-      enteredValues: { email, password, "confirm-password": confirmPassword },
+      enteredValues: {
+        name,
+        email,
+        password,
+        "confirm-password": confirmPassword,
+      },
     };
   };
 
@@ -57,6 +96,7 @@ function RegisterPage() {
     handleFormAction,
     {
       enteredValues: {
+        name: "",
         email: "",
         password: "",
         "confirm-password": "",
@@ -67,24 +107,45 @@ function RegisterPage() {
 
   return (
     <div className="flex h-screen w-screen justify-center items-center bg-amber-50">
-      <Card className="w-full max-w-sm shadow-black shadow-sm hover:scale-105">
+      <MotionCard
+        animate={{
+          scale: 1,
+          opacity: 1,
+        }}
+        initial={{
+          scale: 0.8,
+          opacity: 0,
+        }}
+        transition={{
+          type: "spring",
+          stiffness: 260,
+          ease: "easeOut",
+          duration: 0.5,
+          damping: 20,
+        }}
+        className="w-full max-w-sm shadow-black shadow-sm hover:scale-105"
+      >
         <CardHeader>
           <CardTitle>Register to your Account</CardTitle>
           <CardDescription>Register with basic details</CardDescription>
-          <CardAction>
-            <Button
-              onClick={() => {
-                navigation("/login");
-              }}
-              variant="link"
-              className="cursor-pointer"
-            >
-              Login
-            </Button>
-          </CardAction>
         </CardHeader>
         <CardContent>
           <form action={formAction}>
+            <div className="flex justify-start flex-col my-3">
+              <div className="grid gap-3">
+                <Label htmlFor="name">Name</Label>
+                <Input
+                  defaultValue={formState.enteredValues.name}
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder="Enter your name"
+                  className="border border-black"
+                />
+              </div>
+            </div>
+
+            <Separator />
             <div className="flex justify-start flex-col my-3">
               <div className="grid gap-3">
                 <Label htmlFor="email">Email</Label>
@@ -136,7 +197,18 @@ function RegisterPage() {
             </CardFooter>
           </form>
         </CardContent>
-      </Card>
+        <CardFooter>
+          <Button
+            onClick={() => {
+              navigation("/login");
+            }}
+            variant="link"
+            className="cursor-pointer hover:text-blue-600"
+          >
+            already have an account? login
+          </Button>
+        </CardFooter>
+      </MotionCard>
     </div>
   );
 }
