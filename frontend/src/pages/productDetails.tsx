@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { addToCart } from "@/store/reducers/cartSlice";
+import ReviewSection from "@/components/productDetails/ReviewComponent";
 
 // Dummy product data
 const dummyProduct: Product = {
@@ -83,7 +84,6 @@ const ProductDetails: React.FC = () => {
           </ScrollArea>
         </Card>
       </div>
-
       {/* Right: Product Info */}
       <div>
         <p className="text-sm text-gray-500">
@@ -159,9 +159,8 @@ const ProductDetails: React.FC = () => {
           <p>🛡️ 1 Year Warranty</p>
         </div>
       </div>
-
-      {/* Reviews Section
-      <ReviewSection /> */}
+      Reviews Section
+      <ReviewSection />
     </div>
   );
 };

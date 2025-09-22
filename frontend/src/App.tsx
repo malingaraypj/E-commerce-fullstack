@@ -12,7 +12,7 @@ function App() {
       element: <NavBarWrapper />,
       children: [
         { index: true, element: <LandingPage /> },
-        { path: "product/:id", element: <ProductDetails /> },
+        { path: "products/:id", element: <ProductDetails /> },
       ],
     },
     {

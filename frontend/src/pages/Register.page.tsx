@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -18,6 +17,7 @@ import axios from "axios";
 // api functions
 import { registerUser } from "@/api/auth";
 import { motion } from "framer-motion";
+import Logo from "@/components/Global/Logo";
 
 type FormState = {
   enteredValues: {
@@ -28,7 +28,7 @@ type FormState = {
   };
   error: string;
 };
-const MotionCard = motion(Card);
+const MotionCard = motion.create(Card);
 
 function RegisterPage() {
   const navigation = useNavigate();
@@ -126,8 +126,9 @@ function RegisterPage() {
         className="w-full max-w-sm shadow-black shadow-sm hover:scale-105"
       >
         <CardHeader>
-          <CardTitle>Register to your Account</CardTitle>
-          <CardDescription>Register with basic details</CardDescription>
+          <CardTitle>
+            <Logo />
+          </CardTitle>
         </CardHeader>
         <CardContent>
           <form action={formAction}>

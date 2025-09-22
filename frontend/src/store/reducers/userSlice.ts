@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
+import type { User } from "@/models/User";
 
 const userSlice = createSlice({
   name: "user",
-  initialState: { user: null, isLogged: false },
+  initialState: { user: null as User | null, isLogged: false },
   reducers: {
     login(state, action) {
       state.user = action.payload;

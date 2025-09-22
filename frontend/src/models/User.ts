@@ -1,13 +1,12 @@
 import type { Product } from "./product";
 
-type checkedProduct = {
+export type checkedProduct = {
   product: Product;
   productCount: number;
   createdAt: Date;
 };
 
-export interface User {
+export type User = {
   name: string;
   email: string;
-  checkedProducts: checkedProduct[];
-}
+};

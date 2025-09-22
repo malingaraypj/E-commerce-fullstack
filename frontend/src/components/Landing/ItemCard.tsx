@@ -10,6 +10,7 @@ import {
 import { Star } from "lucide-react"; // For rating stars
 import dummyImg from "@/assets/image.png";
 import type { Product } from "@/models/product";
+import { useNavigate } from "react-router-dom";
 
 type ItemCardProps = {
   data: Product;
@@ -17,6 +18,7 @@ type ItemCardProps = {
 
 const ItemCard: React.FC<ItemCardProps> = ({ data }) => {
   const [hovered, setHovered] = React.useState(false);
+  const navigate = useNavigate();
 
   return (
     <Card
@@ -114,6 +116,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ data }) => {
       >
         <button
           disabled={!data.isAvailable || !data.inStock}
+          onClick={() => navigate("/products/2")}
           className={`w-full rounded-lg py-2 transition cursor-pointer ${
             data.isAvailable && data.inStock
               ? "bg-blue-500 text-white hover:bg-blue-600 hover:scale-105"

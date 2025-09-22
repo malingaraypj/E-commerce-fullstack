@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -16,9 +15,10 @@ import { useDispatch } from "react-redux";
 import { loginUser } from "@/store/actions/userActions";
 import type { AppDispatch } from "@/store/store";
 import { motion } from "framer-motion";
+import Logo from "@/components/Global/Logo";
 
 // Wrap the Card component with motion()
-const MotionCard = motion(Card);
+const MotionCard = motion.create(Card);
 
 type FormState = {
   enteredValues: {
@@ -92,10 +92,9 @@ export default function LoginPage() {
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
         <CardHeader>
-          <CardTitle>Login to your account</CardTitle>
-          <CardDescription>
-            Enter your email below to login to your account
-          </CardDescription>
+          <CardTitle>
+            <Logo />
+          </CardTitle>
         </CardHeader>
         <CardContent>
           <form action={formAction}>
