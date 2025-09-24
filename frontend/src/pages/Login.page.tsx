@@ -17,7 +17,6 @@ import type { AppDispatch } from "@/store/store";
 import { motion } from "framer-motion";
 import Logo from "@/components/Global/Logo";
 
-// Wrap the Card component with motion()
 const MotionCard = motion.create(Card);
 
 type FormState = {
@@ -41,8 +40,6 @@ export default function LoginPage() {
     prevState: FormState,
     formData: FormData
   ): Promise<FormState> => {
-    console.log("inside formaction");
-
     const email = (formData.get("email") as string) ?? "";
     const password = (formData.get("password") as string) ?? "";
 
@@ -84,66 +81,82 @@ export default function LoginPage() {
   );
 
   return (
-    <div className="flex h-screen w-screen items-center justify-center bg-amber-50">
+    <div className="flex h-screen w-screen items-center justify-center bg-gradient-to-br from-amber-100 via-orange-50 to-amber-200">
       <MotionCard
-        className="w-full hover:scale-105 shadow-black/40 shadow-sm max-w-sm"
-        initial={{ opacity: 0, scale: 0.8 }}
+        className="w-full max-w-md rounded-2xl shadow-lg shadow-black/20 border border-gray-200 bg-white"
+        initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
-        <CardHeader>
-          <CardTitle>
+        <CardHeader className="pb-2 text-center">
+          <CardTitle className="flex justify-center">
             <Logo />
           </CardTitle>
+          <p className="text-sm text-gray-500 mt-2">
+            Welcome back! Please log in to continue
+          </p>
         </CardHeader>
+
         <CardContent>
-          <form action={formAction}>
-            <div className="flex flex-col gap-6">
-              <div className="grid gap-2">
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  defaultValue={formState.enteredValues.email}
-                  placeholder="m@example.com"
-                  required
-                />
-              </div>
-              <div className="grid gap-2">
-                <div className="flex items-center">
-                  <Label htmlFor="password">Password</Label>
-                  <a
-                    href="#"
-                    className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-                  >
-                    Forgot your password?
-                  </a>
-                </div>
-                <Input
-                  defaultValue={formState.enteredValues.password}
-                  id="password"
-                  name="password"
-                  type="password"
-                  required
-                />
-              </div>
+          <form action={formAction} className="space-y-5">
+            {/* Email */}
+            <div className="grid gap-2">
+              <Label htmlFor="email" className="text-gray-700 font-medium">
+                Email
+              </Label>
+              <Input
+                id="email"
+                name="email"
+                type="email"
+                defaultValue={formState.enteredValues.email}
+                placeholder="m@example.com"
+                required
+                className="border-gray-300 focus:ring-2 focus:ring-amber-400 rounded-lg"
+              />
             </div>
-            <div className="flex-col mt-5 w-full gap-2">
-              <SubmitButton>Login</SubmitButton>
-              {formState.error && (
-                <p className="text-red-500">{formState.error}</p>
-              )}
+
+            {/* Password */}
+            <div className="grid gap-2">
+              <div className="flex items-center justify-between">
+                <Label htmlFor="password" className="text-gray-700 font-medium">
+                  Password
+                </Label>
+                <a
+                  href="#"
+                  className="text-sm text-amber-600 hover:underline underline-offset-4"
+                >
+                  Forgot your password?
+                </a>
+              </div>
+              <Input
+                id="password"
+                name="password"
+                type="password"
+                defaultValue={formState.enteredValues.password}
+                required
+                className="border-gray-300 focus:ring-2 focus:ring-amber-400 rounded-lg"
+              />
             </div>
+
+            {/* Error Message */}
+            {formState.error && (
+              <p className="text-red-600 text-sm">{formState.error}</p>
+            )}
+
+            {/* Submit */}
+            <SubmitButton className="w-full rounded-lg bg-amber-500 hover:bg-amber-600 text-white shadow-md transition">
+              Login
+            </SubmitButton>
           </form>
         </CardContent>
-        <CardFooter className="w-full">
+
+        <CardFooter className="flex justify-center">
           <Button
             onClick={() => navigation("/register")}
             variant="link"
-            className="cursor-pointer hover:text-blue-600"
+            className="text-gray-600 hover:text-amber-600 transition"
           >
-            Don't have an account? Register here
+            Don’t have an account? <span className="ml-1">Register</span>
           </Button>
         </CardFooter>
       </MotionCard>

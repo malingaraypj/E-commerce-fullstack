@@ -1,0 +1,59 @@
+{
+  "users": [
+    {
+      "_id": "65ffb707693951f2e865f12a",
+      "name": "alia bhatt",
+      "email": "alia.admin@example.com",
+      "password": "passwordAdmin123",
+      "role": "admin",
+      "checkedProduct": []
+    },
+    {
+      "_id": "65ffb707693951f2e865f12b",
+      "name": "ranbir kapoor",
+      "email": "ranbir.seller@example.com",
+      "password": "passwordSeller456",
+      "role": "seller",
+      "checkedProduct": [
+        {
+          "Product": "65ffb767693951f2e865f13b",
+          "productCount": 5
+        }
+      ]
+    },
+    {
+      "_id": "65ffb707693951f2e865f12c",
+      "name": "deepika padukone",
+      "email": "deepika.seller@example.com",
+      "password": "passwordSeller789",
+      "role": "seller",
+      "checkedProduct": []
+    },
+    {
+      "_id": "65ffb707693951f2e865f12d",
+      "name": "shah rukh khan",
+      "email": "shahrukh.customer@example.com",
+      "password": "passwordCustomer101",
+      "role": "customer",
+      "passwordChangedAt": "2025-08-15T10:00:00Z",
+      "checkedProduct": [
+        {
+          "Product": "65ffb767693951f2e865f13b",
+          "productCount": 12
+        },
+        {
+          "Product": "65ffb767693951f2e865f13c",
+          "productCount": 8
+        }
+      ]
+    },
+    {
+      "_id": "65ffb707693951f2e865f12e",
+      "name": "salman khan",
+      "email": "salman.customer@example.com",
+      "password": "passwordCustomer202",
+      "role": "customer",
+      "checkedProduct": []
+    }
+  ]
+}

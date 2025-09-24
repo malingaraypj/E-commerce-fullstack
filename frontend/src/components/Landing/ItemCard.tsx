@@ -7,7 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Star } from "lucide-react"; // For rating stars
+import { Star } from "lucide-react";
 import dummyImg from "@/assets/image.png";
 import type { Product } from "@/models/product";
 import { useNavigate } from "react-router-dom";
@@ -22,12 +22,12 @@ const ItemCard: React.FC<ItemCardProps> = ({ data }) => {
 
   return (
     <Card
-      className="relative hover:scale-105  rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 bg-white overflow-hidden"
+      className="relative w-full sm:w-[48%] md:w-[32%] lg:w-[24%] rounded-xl shadow-md hover:shadow-xl transition-transform duration-300 transform hover:scale-105 overflow-hidden bg-white"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
       {/* Product Image */}
-      <div className="relative bg-white p-3">
+      <div className="relative p-3 bg-white">
         <img
           src={dummyImg}
           alt={data.name}
@@ -36,7 +36,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ data }) => {
 
         {/* Badges */}
         {data.badges && (
-          <div className="absolute top-0 left-2 flex gap-2 z-10">
+          <div className="absolute top-2 left-2 flex flex-wrap gap-2 z-10">
             {data.badges.map((badge, idx) => (
               <span
                 key={idx}
@@ -50,9 +50,8 @@ const ItemCard: React.FC<ItemCardProps> = ({ data }) => {
       </div>
 
       {/* Card Content */}
-      <CardContent className="p-4 pt-0">
-        {/* Card Header */}
-        <CardHeader className="p-4">
+      <CardContent className="p-4 pt-2">
+        <CardHeader className="p-0 mb-2">
           {data.brand && (
             <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">
               {data.brand}
@@ -65,7 +64,8 @@ const ItemCard: React.FC<ItemCardProps> = ({ data }) => {
             {data.description}
           </CardDescription>
         </CardHeader>
-        {/* Price + Discount */}
+
+        {/* Price */}
         <div className="flex items-center gap-2 mb-2">
           <p className="text-xl font-bold text-blue-600">
             ${data.discountedPrice.toFixed(2)}
@@ -77,7 +77,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ data }) => {
           )}
         </div>
 
-        {/* Rating & Reviews */}
+        {/* Rating */}
         <div className="flex items-center gap-1 text-sm text-gray-600 mb-1">
           {Array.from({ length: 5 }, (_, i) => (
             <Star
@@ -106,7 +106,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ data }) => {
         </p>
       </CardContent>
 
-      {/* Animated Add to Cart Button */}
+      {/* Add to Cart */}
       <motion.div
         initial={{ y: 80, opacity: 0 }}
         animate={hovered ? { y: 0, opacity: 1 } : { y: 80, opacity: 0 }}
@@ -116,10 +116,10 @@ const ItemCard: React.FC<ItemCardProps> = ({ data }) => {
       >
         <button
           disabled={!data.isAvailable || !data.inStock}
-          onClick={() => navigate("/products/2")}
-          className={`w-full rounded-lg py-2 transition cursor-pointer ${
+          onClick={() => navigate(`/products/${data.id}`)}
+          className={`w-full rounded-lg py-2 transition-transform duration-200 ${
             data.isAvailable && data.inStock
-              ? "bg-blue-500 text-white hover:bg-blue-600 hover:scale-105"
+              ? "bg-blue-500 text-white hover:bg-blue-600 hover:scale-105 cursor-pointer"
               : "bg-gray-300 text-gray-500 cursor-not-allowed"
           }`}
         >

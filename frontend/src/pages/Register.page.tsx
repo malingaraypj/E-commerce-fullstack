@@ -9,7 +9,6 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Separator } from "@/components/ui/separator";
 import { useActionState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -37,14 +36,11 @@ function RegisterPage() {
     prevState: FormState,
     formData: FormData
   ): Promise<FormState> => {
-    console.log("inside");
-
     const email = (formData.get("email") as string) ?? "";
     const password = (formData.get("password") as string) ?? "";
     const confirmPassword = (formData.get("confirm-password") as string) ?? "";
     const name = (formData.get("name") as string) ?? "";
 
-    // Basic validation
     if (password !== confirmPassword) {
       return {
         ...prevState,
@@ -62,7 +58,6 @@ function RegisterPage() {
       await registerUser({ name, email, password });
       navigation("/login");
     } catch (error) {
-      console.log(error);
       let errorMessage = "Registration failed";
 
       if (axios.isAxiosError(error)) {
@@ -106,107 +101,111 @@ function RegisterPage() {
   );
 
   return (
-    <div className="flex h-screen w-screen justify-center items-center bg-amber-50">
+    <div className="flex h-screen w-screen justify-center items-center bg-gradient-to-br from-amber-100 via-orange-50 to-amber-200">
       <MotionCard
-        animate={{
-          scale: 1,
-          opacity: 1,
-        }}
-        initial={{
-          scale: 0.8,
-          opacity: 0,
-        }}
+        animate={{ scale: 1, opacity: 1 }}
+        initial={{ scale: 0.9, opacity: 0 }}
         transition={{
           type: "spring",
-          stiffness: 260,
-          ease: "easeOut",
-          duration: 0.5,
-          damping: 20,
+          stiffness: 250,
+          damping: 22,
         }}
-        className="w-full max-w-sm shadow-black shadow-sm hover:scale-105"
+        className="w-full max-w-md rounded-2xl shadow-lg shadow-black/20 border border-gray-200 bg-white"
       >
-        <CardHeader>
-          <CardTitle>
+        <CardHeader className="pb-2 text-center">
+          <CardTitle className="flex justify-center">
             <Logo />
           </CardTitle>
+          <p className="text-sm text-gray-500 mt-2">
+            Create an account to get started
+          </p>
         </CardHeader>
         <CardContent>
-          <form action={formAction}>
-            <div className="flex justify-start flex-col my-3">
-              <div className="grid gap-3">
-                <Label htmlFor="name">Name</Label>
-                <Input
-                  defaultValue={formState.enteredValues.name}
-                  type="text"
-                  name="name"
-                  id="name"
-                  placeholder="Enter your name"
-                  className="border border-black"
-                />
-              </div>
+          <form action={formAction} className="space-y-5">
+            {/* Name */}
+            <div className="grid gap-2">
+              <Label htmlFor="name" className="text-gray-700 font-medium">
+                Name
+              </Label>
+              <Input
+                defaultValue={formState.enteredValues.name}
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Enter your name"
+                className="border-gray-300 focus:ring-2 focus:ring-amber-400 rounded-lg"
+              />
             </div>
 
-            <Separator />
-            <div className="flex justify-start flex-col my-3">
-              <div className="grid gap-3">
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  defaultValue={formState.enteredValues.email}
-                  type="email"
-                  name="email"
-                  id="email"
-                  placeholder="example@gmail.com"
-                  className="border border-black"
-                />
-              </div>
+            {/* Email */}
+            <div className="grid gap-2">
+              <Label htmlFor="email" className="text-gray-700 font-medium">
+                Email
+              </Label>
+              <Input
+                defaultValue={formState.enteredValues.email}
+                type="email"
+                name="email"
+                id="email"
+                placeholder="example@gmail.com"
+                className="border-gray-300 focus:ring-2 focus:ring-amber-400 rounded-lg"
+              />
             </div>
 
-            <Separator />
-
-            <div className="flex justify-start flex-col">
-              <div className="grid gap-3">
-                <Label htmlFor="password">Password</Label>
-                <Input
-                  id="password"
-                  name="password"
-                  type="password"
-                  className="border border-black"
-                />
-              </div>
+            {/* Password */}
+            <div className="grid gap-2">
+              <Label htmlFor="password" className="text-gray-700 font-medium">
+                Password
+              </Label>
+              <Input
+                id="password"
+                name="password"
+                type="password"
+                placeholder="••••••••"
+                className="border-gray-300 focus:ring-2 focus:ring-amber-400 rounded-lg"
+              />
             </div>
 
-            <Separator />
-
-            <div className="flex justify-start flex-col mt-3">
-              <div className="grid gap-3">
-                <Label htmlFor="confirm-password">Confirm Password</Label>
-                <Input
-                  id="confirm-password"
-                  name="confirm-password"
-                  type="password"
-                  className="border border-black"
-                />
-              </div>
+            {/* Confirm Password */}
+            <div className="grid gap-2">
+              <Label
+                htmlFor="confirm-password"
+                className="text-gray-700 font-medium"
+              >
+                Confirm Password
+              </Label>
+              <Input
+                id="confirm-password"
+                name="confirm-password"
+                type="password"
+                placeholder="••••••••"
+                className="border-gray-300 focus:ring-2 focus:ring-amber-400 rounded-lg"
+              />
             </div>
 
+            {/* Error Message */}
             {formState.error && (
-              <p className="text-red-600 text-sm mt-2">{formState.error}</p>
+              <p className="text-red-600 text-sm">{formState.error}</p>
             )}
 
-            <CardFooter className="mt-4 p-0">
-              <SubmitButton>Register</SubmitButton>
+            {/* Submit Button */}
+            <CardFooter className="p-0">
+              <SubmitButton className="w-full rounded-lg bg-amber-500 hover:bg-amber-600 text-white shadow-md transition">
+                Register
+              </SubmitButton>
             </CardFooter>
           </form>
         </CardContent>
-        <CardFooter>
+
+        <CardFooter className="flex justify-center">
           <Button
             onClick={() => {
               navigation("/login");
             }}
             variant="link"
-            className="cursor-pointer hover:text-blue-600"
+            className="text-gray-600 hover:text-amber-600 transition"
           >
-            already have an account? login
+            Already have an account? <span className="ml-1">Login</span>
           </Button>
         </CardFooter>
       </MotionCard>

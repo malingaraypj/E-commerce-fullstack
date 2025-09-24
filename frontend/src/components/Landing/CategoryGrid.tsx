@@ -1,32 +1,48 @@
 import React from "react";
-import ItemCard from "./ItemCard";
 import { dummyProducts } from "@/data/product";
 import type { Product } from "@/models/product";
+import ProductSlider from "./ProductSlider";
 
-type Category = {
-  name: string;
-  data: Product[];
-};
+const categories = [
+  "Groceries",
+  "Premium Fruits",
+  "Home & Kitchen",
+  "Fashion",
+  "Electronics",
+  "Beauty",
+  "Home Improvement",
+  "furniture",
+  "Sports, Toys & Luggage",
+];
 
 type CategoryCardsProps = {
-  category: Category;
+  data?: Product[]; // optional, falls back to dummyProducts
 };
 
-const CategoryCards: React.FC<CategoryCardsProps> = ({ category }) => {
-  const items = category.data.length ? category.data : dummyProducts;
-  return (
-    <div className="flex flex-col gap-6 bg-blue-400 items-center p-6 rounded-lg w-[80%] m-auto">
-      {/* Title */}
-      <div className="flex items-center justify-start w-full">
-        <h2 className="text-3xl font-bold text-gray-800">{category.name}</h2>
-      </div>
+const CategoryCards: React.FC<CategoryCardsProps> = ({ data }) => {
+  const items = data?.length ? data : dummyProducts;
 
-      {/* Cards */}
-      <div className="w-full grid grid-cols-3 gap-6 px-20">
-        {items.map((item, index) => (
-          <ItemCard key={index} data={item} />
-        ))}
-      </div>
+  return (
+    <div className="flex flex-col gap-12 w-[90%] m-auto py-10">
+      {categories.map((category, idx) => {
+        // Filter products for this category (case-insensitive)
+        const filteredItems = items.filter((product) =>
+          product.category
+            .map((cat) => cat.toLowerCase())
+            .includes(category.toLowerCase())
+        );
+
+        // Skip rendering if no products in this category
+        if (!filteredItems.length) return null;
+
+        return (
+          <ProductSlider
+            category={category}
+            filteredItems={filteredItems}
+            idx={idx}
+          />
+        );
+      })}
     </div>
   );
 };
