@@ -3,14 +3,13 @@ export type Product = {
   name: string;
   description: string;
   images: string[];
-  category: string[];
-  discountedPrice: number;
+  category: string[] | string;
+  price: number;
   originalPrice?: number;
   brand?: string;
   rating?: number;
   reviewCount?: number;
-  inStock: boolean;
-  isAvailable: boolean;
+  stock: number;
   averageRating: number;
   badges?: string[];
 };

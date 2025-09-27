@@ -29,7 +29,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ data }) => {
       {/* Product Image */}
       <div className="relative p-3 bg-white h-48 flex-shrink-0">
         <img
-          src={dummyImg}
+          src={data.images[0] ? data.images[0] : dummyImg}
           alt={data.name}
           className="w-full h-full object-contain rounded-lg"
         />
@@ -69,7 +69,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ data }) => {
           {/* Price */}
           <div className="flex items-center gap-2 mb-2">
             <p className="text-xl font-bold text-blue-600">
-              ${data.discountedPrice.toFixed(2)}
+              ${data.price?.toFixed(2)}
             </p>
             {data.originalPrice && (
               <p className="text-sm text-gray-400 line-through">
@@ -91,7 +91,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ data }) => {
                 }
               />
             ))}
-            <span className="ml-1">{data.averageRating.toFixed(1)}</span>
+            <span className="ml-1">{data.averageRating?.toFixed(1)}</span>
             {data.reviewCount !== undefined && (
               <span className="text-gray-400">({data.reviewCount})</span>
             )}
@@ -100,10 +100,10 @@ const ItemCard: React.FC<ItemCardProps> = ({ data }) => {
           {/* Stock Info */}
           <p
             className={`mt-1 text-xs font-medium ${
-              data.inStock ? "text-green-600" : "text-red-500"
+              data.stock > 0 ? "text-green-600" : "text-red-500"
             }`}
           >
-            {data.inStock ? "In Stock" : "Out of Stock"}
+            {data.stock > 0 ? "In Stock" : "Out of Stock"}
           </p>
         </div>
       </CardContent>
@@ -117,17 +117,15 @@ const ItemCard: React.FC<ItemCardProps> = ({ data }) => {
         style={{ pointerEvents: hovered ? "auto" : "none" }}
       >
         <button
-          disabled={!data.isAvailable || !data.inStock}
+          disabled={data.stock == 0}
           onClick={() => navigate(`/products/${data.id}`)}
           className={`w-full rounded-lg py-2 transition-transform duration-200 ${
-            data.isAvailable && data.inStock
+            data.stock > 0
               ? "bg-blue-500 text-white hover:bg-blue-600 hover:scale-105 cursor-pointer"
               : "bg-gray-300 text-gray-500 cursor-not-allowed"
           }`}
         >
-          {data.isAvailable && data.inStock
-            ? "Add to Cart"
-            : "Currently Unavailable"}
+          {data.stock > 0 ? "Add to Cart" : "Currently Unavailable"}
         </button>
       </motion.div>
     </Card>

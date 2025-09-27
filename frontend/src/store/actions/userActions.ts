@@ -21,6 +21,9 @@ export const loginUser = (email: string, password: string) => {
 
       if (user) {
         dispatch(login(user));
+
+        localStorage.setItem("token", response.data?.token);
+        localStorage.setItem("user", JSON.stringify(user));
         return { success: true };
       } else {
         return { success: false, message: "Login failed: No user data found." };

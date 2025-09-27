@@ -1,39 +1,70 @@
 import React, { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import ItemCard from "./ItemCard";
+import { useQuery } from "@tanstack/react-query";
+import { getProductByCategory } from "@/api/product";
 import type { Product } from "@/models/product";
+import { Skeleton } from "@/components/ui/skeleton";
 
 type ProductSliderProps = {
-  filteredItems: Product[];
   category: string;
   idx: number;
 };
 
-const ProductSlider: React.FC<ProductSliderProps> = ({
-  filteredItems,
-  category,
-  idx,
-}) => {
+const ProductSlider: React.FC<ProductSliderProps> = ({ category, idx }) => {
+  const {
+    data: productData,
+    isLoading,
+    isError,
+    error,
+  } = useQuery({
+    queryKey: ["products", category],
+    queryFn: () => getProductByCategory(category),
+  });
+
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const slideNext = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex >= filteredItems.length - 3 ? 0 : prevIndex + 1
-    );
-  };
+  const products = productData || [];
 
-  const slidePrev = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex <= 0 ? filteredItems.length - 3 : prevIndex - 1
-    );
-  };
+  const slideNext = React.useCallback(() => {
+    if (products.length > 3) {
+      setCurrentIndex((prevIndex) =>
+        prevIndex >= products.length - 3 ? 0 : prevIndex + 1
+      );
+    }
+  }, [products.length]);
+
+  const slidePrev = React.useCallback(() => {
+    if (products.length > 3) {
+      setCurrentIndex((prevIndex) =>
+        prevIndex <= 0 ? products.length - 3 : prevIndex - 1
+      );
+    }
+  }, [products.length]);
 
   useEffect(() => {
     const slideInterval = setInterval(slideNext, 5000);
     return () => clearInterval(slideInterval);
   }, [currentIndex, slideNext]);
 
-  if (!filteredItems.length) return null;
+  if (isLoading) {
+    return (
+      <div className="p-6">
+        <Skeleton className="h-48 w-full" />
+      </div>
+    );
+  }
+
+  if (isError) {
+    console.error("Error fetching products:", error);
+    return (
+      <div className="p-6 text-red-500">
+        Could not load products for {category}.
+      </div>
+    );
+  }
+
+  if (!products.length) return null;
 
   return (
     <div
@@ -51,7 +82,7 @@ const ProductSlider: React.FC<ProductSliderProps> = ({
         className="flex transition-transform duration-500 ease-in-out"
         style={{ transform: `translateX(-${(currentIndex * 100) / 3}%)` }}
       >
-        {filteredItems.map((item, index) => (
+        {products.map((item: Product, index: number) => (
           <div
             key={`${category}-${index}`}
             className="w-1/3 flex-shrink-0 px-2"
@@ -77,7 +108,7 @@ const ProductSlider: React.FC<ProductSliderProps> = ({
 
       {/* Indicator Dots */}
       <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-        {Array.from({ length: Math.ceil(filteredItems.length / 3) }).map(
+        {Array.from({ length: Math.ceil(products.length / 3) }).map(
           (_, index) => (
             <button
               key={index}

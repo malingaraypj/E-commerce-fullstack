@@ -1,0 +1,868 @@
+{
+  "products": [
+    {
+      "name": "Wireless Headphones",
+      "owner": "65ffb707693951f2e865f12b",
+      "description": "High-quality wireless headphones with noise cancellation.",
+      "price": 89.99,
+      "category": "electronics",
+      "stock": 50,
+      "isAvailable": true,
+      "averageRating": 4.5,
+      "images": [
+        "https://picsum.photos/seed/WirelessHeadphones1/800/600",
+        "https://picsum.photos/seed/WirelessHeadphones2/800/600",
+        "https://picsum.photos/seed/WirelessHeadphones3/800/600",
+        "https://picsum.photos/seed/WirelessHeadphones4/800/600"
+      ]
+    },
+    {
+      "name": "Smartwatch Pro",
+      "owner": "65ffb707693951f2e865f12c",
+      "description": "Feature-rich smartwatch with fitness tracking and GPS.",
+      "price": 179.99,
+      "category": "electronics",
+      "stock": 30,
+      "isAvailable": true,
+      "averageRating": 4.2,
+      "images": [
+        "https://picsum.photos/seed/SmartwatchPro1/800/600",
+        "https://picsum.photos/seed/SmartwatchPro2/800/600",
+        "https://picsum.photos/seed/SmartwatchPro3/800/600",
+        "https://picsum.photos/seed/SmartwatchPro4/800/600"
+      ]
+    },
+    {
+      "name": "Gaming Laptop",
+      "owner": "65ffb707693951f2e865f12b",
+      "description": "Powerful gaming laptop with high-end graphics and performance.",
+      "price": 1299.99,
+      "category": "electronics",
+      "stock": 15,
+      "isAvailable": true,
+      "averageRating": 4.7,
+      "images": [
+        "https://picsum.photos/seed/GamingLaptop1/800/600",
+        "https://picsum.photos/seed/GamingLaptop2/800/600",
+        "https://picsum.photos/seed/GamingLaptop3/800/600",
+        "https://picsum.photos/seed/GamingLaptop4/800/600"
+      ]
+    },
+    {
+      "name": "Bluetooth Speaker",
+      "owner": "65ffb707693951f2e865f12c",
+      "description": "Portable Bluetooth speaker with deep bass and clear sound.",
+      "price": 59.99,
+      "category": "electronics",
+      "stock": 100,
+      "isAvailable": true,
+      "averageRating": 4.3,
+      "images": [
+        "https://picsum.photos/seed/BluetoothSpeaker1/800/600",
+        "https://picsum.photos/seed/BluetoothSpeaker2/800/600",
+        "https://picsum.photos/seed/BluetoothSpeaker3/800/600",
+        "https://picsum.photos/seed/BluetoothSpeaker4/800/600"
+      ]
+    },
+    {
+      "name": "4K Ultra HD TV",
+      "owner": "65ffb707693951f2e865f12b",
+      "description": "A 55-inch 4K Ultra HD TV with stunning picture quality.",
+      "price": 499.99,
+      "category": "electronics",
+      "stock": 25,
+      "isAvailable": true,
+      "averageRating": 4.8,
+      "images": [
+        "https://picsum.photos/seed/4KTV1/800/600",
+        "https://picsum.photos/seed/4KTV2/800/600",
+        "https://picsum.photos/seed/4KTV3/800/600",
+        "https://picsum.photos/seed/4KTV4/800/600"
+      ]
+    },
+    {
+      "name": "Digital Camera",
+      "owner": "65ffb707693951f2e865f12c",
+      "description": "High-resolution digital camera with advanced zoom features.",
+      "price": 599.99,
+      "category": "electronics",
+      "stock": 40,
+      "isAvailable": true,
+      "averageRating": 4.6,
+      "images": [
+        "https://picsum.photos/seed/DigitalCamera1/800/600",
+        "https://picsum.photos/seed/DigitalCamera2/800/600",
+        "https://picsum.photos/seed/DigitalCamera3/800/600",
+        "https://picsum.photos/seed/DigitalCamera4/800/600"
+      ]
+    },
+    {
+      "name": "Men's Classic Tee",
+      "owner": "65ffb707693951f2e865f12b",
+      "description": "A classic 100% cotton t-shirt for everyday comfort.",
+      "price": 25.0,
+      "category": "clothing",
+      "stock": 200,
+      "isAvailable": true,
+      "averageRating": 4.7,
+      "images": [
+        "https://picsum.photos/seed/ClassicTee1/800/600",
+        "https://picsum.photos/seed/ClassicTee2/800/600",
+        "https://picsum.photos/seed/ClassicTee3/800/600",
+        "https://picsum.photos/seed/ClassicTee4/800/600"
+      ]
+    },
+    {
+      "name": "Women's Denim Jeans",
+      "owner": "65ffb707693951f2e865f12c",
+      "description": "Stylish and comfortable denim jeans for any occasion.",
+      "price": 60.0,
+      "category": "clothing",
+      "stock": 150,
+      "isAvailable": true,
+      "averageRating": 4.5,
+      "images": [
+        "https://picsum.photos/seed/DenimJeans1/800/600",
+        "https://picsum.photos/seed/DenimJeans2/800/600",
+        "https://picsum.photos/seed/DenimJeans3/800/600",
+        "https://picsum.photos/seed/DenimJeans4/800/600"
+      ]
+    },
+    {
+      "name": "Winter Jacket",
+      "owner": "65ffb707693951f2e865f12b",
+      "description": "A warm and waterproof jacket for cold weather.",
+      "price": 120.0,
+      "category": "clothing",
+      "stock": 70,
+      "isAvailable": true,
+      "averageRating": 4.8,
+      "images": [
+        "https://picsum.photos/seed/WinterJacket1/800/600",
+        "https://picsum.photos/seed/WinterJacket2/800/600",
+        "https://picsum.photos/seed/WinterJacket3/800/600",
+        "https://picsum.photos/seed/WinterJacket4/800/600"
+      ]
+    },
+    {
+      "name": "Formal Shirt",
+      "owner": "65ffb707693951f2e865f12c",
+      "description": "A crisp, formal shirt perfect for business meetings.",
+      "price": 45.0,
+      "category": "clothing",
+      "stock": 100,
+      "isAvailable": true,
+      "averageRating": 4.6,
+      "images": [
+        "https://picsum.photos/seed/FormalShirt1/800/600",
+        "https://picsum.photos/seed/FormalShirt2/800/600",
+        "https://picsum.photos/seed/FormalShirt3/800/600",
+        "https://picsum.photos/seed/FormalShirt4/800/600"
+      ]
+    },
+    {
+      "name": "Sports Shorts",
+      "owner": "65ffb707693951f2e865f12b",
+      "description": "Lightweight and breathable shorts for workouts.",
+      "price": 30.0,
+      "category": "clothing",
+      "stock": 120,
+      "isAvailable": true,
+      "averageRating": 4.4,
+      "images": [
+        "https://picsum.photos/seed/SportsShorts1/800/600",
+        "https://picsum.photos/seed/SportsShorts2/800/600",
+        "https://picsum.photos/seed/SportsShorts3/800/600",
+        "https://picsum.photos/seed/SportsShorts4/800/600"
+      ]
+    },
+    {
+      "name": "Hoodie",
+      "owner": "65ffb707693951f2e865f12c",
+      "description": "A comfortable and stylish hoodie for casual wear.",
+      "price": 55.0,
+      "category": "clothing",
+      "stock": 90,
+      "isAvailable": true,
+      "averageRating": 4.7,
+      "images": [
+        "https://picsum.photos/seed/Hoodie1/800/600",
+        "https://picsum.photos/seed/Hoodie2/800/600",
+        "https://picsum.photos/seed/Hoodie3/800/600",
+        "https://picsum.photos/seed/Hoodie4/800/600"
+      ]
+    },
+    {
+      "name": "Modern Coffee Table",
+      "owner": "65ffb707693951f2e865f12c",
+      "description": "A sleek and modern coffee table, perfect for any living room.",
+      "price": 150.0,
+      "category": "home",
+      "stock": 20,
+      "isAvailable": true,
+      "averageRating": 4.9,
+      "images": [
+        "https://picsum.photos/seed/CoffeeTable1/800/600",
+        "https://picsum.photos/seed/CoffeeTable2/800/600",
+        "https://picsum.photos/seed/CoffeeTable3/800/600",
+        "https://picsum.photos/seed/CoffeeTable4/800/600"
+      ]
+    },
+    {
+      "name": "Bedside Lamp",
+      "owner": "65ffb707693951f2e865f12b",
+      "description": "A stylish bedside lamp with adjustable brightness.",
+      "price": 35.0,
+      "category": "home",
+      "stock": 80,
+      "isAvailable": true,
+      "averageRating": 4.5,
+      "images": [
+        "https://picsum.photos/seed/BedsideLamp1/800/600",
+        "https://picsum.photos/seed/BedsideLamp2/800/600",
+        "https://picsum.photos/seed/BedsideLamp3/800/600",
+        "https://picsum.photos/seed/BedsideLamp4/800/600"
+      ]
+    },
+    {
+      "name": "Bookshelf",
+      "owner": "65ffb707693951f2e865f12c",
+      "description": "A sturdy and spacious bookshelf for your home library.",
+      "price": 200.0,
+      "category": "home",
+      "stock": 30,
+      "isAvailable": true,
+      "averageRating": 4.7,
+      "images": [
+        "https://picsum.photos/seed/Bookshelf1/800/600",
+        "https://picsum.photos/seed/Bookshelf2/800/600",
+        "https://picsum.photos/seed/Bookshelf3/800/600",
+        "https://picsum.photos/seed/Bookshelf4/800/600"
+      ]
+    },
+    {
+      "name": "Kitchen Knife Set",
+      "owner": "65ffb707693951f2e865f12b",
+      "description": "A professional-grade kitchen knife set with a wooden block.",
+      "price": 100.0,
+      "category": "home",
+      "stock": 50,
+      "isAvailable": true,
+      "averageRating": 4.8,
+      "images": [
+        "https://picsum.photos/seed/KnifeSet1/800/600",
+        "https://picsum.photos/seed/KnifeSet2/800/600",
+        "https://picsum.photos/seed/KnifeSet3/800/600",
+        "https://picsum.photos/seed/KnifeSet4/800/600"
+      ]
+    },
+    {
+      "name": "Dining Chair Set",
+      "owner": "65ffb707693951f2e865f12c",
+      "description": "A set of four elegant dining chairs.",
+      "price": 250.0,
+      "category": "home",
+      "stock": 15,
+      "isAvailable": true,
+      "averageRating": 4.6,
+      "images": [
+        "https://picsum.photos/seed/DiningChair1/800/600",
+        "https://picsum.photos/seed/DiningChair2/800/600",
+        "https://picsum.photos/seed/DiningChair3/800/600",
+        "https://picsum.photos/seed/DiningChair4/800/600"
+      ]
+    },
+    {
+      "name": "Wall Clock",
+      "owner": "65ffb707693951f2e865f12b",
+      "description": "A large, minimalist wall clock for a modern look.",
+      "price": 40.0,
+      "category": "home",
+      "stock": 100,
+      "isAvailable": true,
+      "averageRating": 4.4,
+      "images": [
+        "https://picsum.photos/seed/WallClock1/800/600",
+        "https://picsum.photos/seed/WallClock2/800/600",
+        "https://picsum.photos/seed/WallClock3/800/600",
+        "https://picsum.photos/seed/WallClock4/800/600"
+      ]
+    },
+    {
+      "name": "Yoga Mat",
+      "owner": "65ffb707693951f2e865f12b",
+      "description": "Eco-friendly, non-slip yoga mat for your daily practice.",
+      "price": 40.0,
+      "category": "sports",
+      "stock": 150,
+      "isAvailable": true,
+      "averageRating": 4.6,
+      "images": [
+        "https://picsum.photos/seed/YogaMat1/800/600",
+        "https://picsum.photos/seed/YogaMat2/800/600",
+        "https://picsum.photos/seed/YogaMat3/800/600",
+        "https://picsum.photos/seed/YogaMat4/800/600"
+      ]
+    },
+    {
+      "name": "Basketball",
+      "owner": "65ffb707693951f2e865f12c",
+      "description": "An official size and weight basketball.",
+      "price": 30.0,
+      "category": "sports",
+      "stock": 200,
+      "isAvailable": true,
+      "averageRating": 4.7,
+      "images": [
+        "https://picsum.photos/seed/Basketball1/800/600",
+        "https://picsum.photos/seed/Basketball2/800/600",
+        "https://picsum.photos/seed/Basketball3/800/600",
+        "https://picsum.photos/seed/Basketball4/800/600"
+      ]
+    },
+    {
+      "name": "Dumbbell Set",
+      "owner": "65ffb707693951f2e865f12b",
+      "description": "A set of adjustable dumbbells for home workouts.",
+      "price": 80.0,
+      "category": "sports",
+      "stock": 60,
+      "isAvailable": true,
+      "averageRating": 4.8,
+      "images": [
+        "https://picsum.photos/seed/DumbbellSet1/800/600",
+        "https://picsum.photos/seed/DumbbellSet2/800/600",
+        "https://picsum.photos/seed/DumbbellSet3/800/600",
+        "https://picsum.photos/seed/DumbbellSet4/800/600"
+      ]
+    },
+    {
+      "name": "Tennis Racket",
+      "owner": "65ffb707693951f2e865f12c",
+      "description": "A lightweight and powerful tennis racket for all skill levels.",
+      "price": 90.0,
+      "category": "sports",
+      "stock": 40,
+      "isAvailable": true,
+      "averageRating": 4.6,
+      "images": [
+        "https://picsum.photos/seed/TennisRacket1/800/600",
+        "https://picsum.photos/seed/TennisRacket2/800/600",
+        "https://picsum.photos/seed/TennisRacket3/800/600",
+        "https://picsum.photos/seed/TennisRacket4/800/600"
+      ]
+    },
+    {
+      "name": "Soccer Ball",
+      "owner": "65ffb707693951f2e865f12b",
+      "description": "A durable soccer ball for practice and matches.",
+      "price": 25.0,
+      "category": "sports",
+      "stock": 250,
+      "isAvailable": true,
+      "averageRating": 4.5,
+      "images": [
+        "https://picsum.photos/seed/SoccerBall1/800/600",
+        "https://picsum.photos/seed/SoccerBall2/800/600",
+        "https://picsum.photos/seed/SoccerBall3/800/600",
+        "https://picsum.photos/seed/SoccerBall4/800/600"
+      ]
+    },
+    {
+      "name": "Skateboard",
+      "owner": "65ffb707693951f2e865f12c",
+      "description": "A complete skateboard with a unique deck design.",
+      "price": 65.0,
+      "category": "sports",
+      "stock": 100,
+      "isAvailable": true,
+      "averageRating": 4.7,
+      "images": [
+        "https://picsum.photos/seed/Skateboard1/800/600",
+        "https://picsum.photos/seed/Skateboard2/800/600",
+        "https://picsum.photos/seed/Skateboard3/800/600",
+        "https://picsum.photos/seed/Skateboard4/800/600"
+      ]
+    },
+    {
+      "name": "The Great Gatsby",
+      "owner": "65ffb707693951f2e865f12c",
+      "description": "A classic novel by F. Scott Fitzgerald.",
+      "price": 15.0,
+      "category": "books",
+      "stock": 300,
+      "isAvailable": true,
+      "averageRating": 4.8,
+      "images": [
+        "https://picsum.photos/seed/Gatsby1/800/600",
+        "https://picsum.photos/seed/Gatsby2/800/600",
+        "https://picsum.photos/seed/Gatsby3/800/600",
+        "https://picsum.photos/seed/Gatsby4/800/600"
+      ]
+    },
+    {
+      "name": "Sapiens: A Brief History of Humankind",
+      "owner": "65ffb707693951f2e865f12b",
+      "description": "A bestselling book by Yuval Noah Harari.",
+      "price": 20.0,
+      "category": "books",
+      "stock": 250,
+      "isAvailable": true,
+      "averageRating": 4.9,
+      "images": [
+        "https://picsum.photos/seed/Sapiens1/800/600",
+        "https://picsum.photos/seed/Sapiens2/800/600",
+        "https://picsum.photos/seed/Sapiens3/800/600",
+        "https://picsum.photos/seed/Sapiens4/800/600"
+      ]
+    },
+    {
+      "name": "Atomic Habits",
+      "owner": "65ffb707693951f2e865f12c",
+      "description": "An easy & proven way to build good habits & break bad ones.",
+      "price": 18.0,
+      "category": "books",
+      "stock": 400,
+      "isAvailable": true,
+      "averageRating": 4.9,
+      "images": [
+        "https://picsum.photos/seed/AtomicHabits1/800/600",
+        "https://picsum.photos/seed/AtomicHabits2/800/600",
+        "https://picsum.photos/seed/AtomicHabits3/800/600",
+        "https://picsum.photos/seed/AtomicHabits4/800/600"
+      ]
+    },
+    {
+      "name": "The Hobbit",
+      "owner": "65ffb707693951f2e865f12b",
+      "description": "A fantasy novel by J.R.R. Tolkien.",
+      "price": 12.0,
+      "category": "books",
+      "stock": 350,
+      "isAvailable": true,
+      "averageRating": 4.8,
+      "images": [
+        "https://picsum.photos/seed/TheHobbit1/800/600",
+        "https://picsum.photos/seed/TheHobbit2/800/600",
+        "https://picsum.photos/seed/TheHobbit3/800/600",
+        "https://picsum.photos/seed/TheHobbit4/800/600"
+      ]
+    },
+    {
+      "name": "Cookbook for Beginners",
+      "owner": "65ffb707693951f2e865f12c",
+      "description": "A cookbook with easy-to-follow recipes for beginners.",
+      "price": 22.0,
+      "category": "books",
+      "stock": 150,
+      "isAvailable": true,
+      "averageRating": 4.6,
+      "images": [
+        "https://picsum.photos/seed/Cookbook1/800/600",
+        "https://picsum.photos/seed/Cookbook2/800/600",
+        "https://picsum.photos/seed/Cookbook3/800/600",
+        "https://picsum.photos/seed/Cookbook4/800/600"
+      ]
+    },
+    {
+      "name": "A Man Called Ove",
+      "owner": "65ffb707693951f2e865f12b",
+      "description": "A heartwarming novel by Fredrik Backman.",
+      "price": 16.0,
+      "category": "books",
+      "stock": 200,
+      "isAvailable": true,
+      "averageRating": 4.7,
+      "images": [
+        "https://picsum.photos/seed/Ove1/800/600",
+        "https://picsum.photos/seed/Ove2/800/600",
+        "https://picsum.photos/seed/Ove3/800/600",
+        "https://picsum.photos/seed/Ove4/800/600"
+      ]
+    },
+    {
+      "name": "Organic Apples",
+      "owner": "65ffb707693951f2e865f12b",
+      "description": "A pound of fresh, organic apples.",
+      "price": 5.0,
+      "category": "grocery",
+      "stock": 500,
+      "isAvailable": true,
+      "averageRating": 4.9,
+      "images": [
+        "https://picsum.photos/seed/Apples1/800/600",
+        "https://picsum.photos/seed/Apples2/800/600",
+        "https://picsum.photos/seed/Apples3/800/600",
+        "https://picsum.photos/seed/Apples4/800/600"
+      ]
+    },
+    {
+      "name": "Fresh Milk",
+      "owner": "65ffb707693951f2e865f12c",
+      "description": "One gallon of fresh, whole milk.",
+      "price": 4.0,
+      "category": "grocery",
+      "stock": 300,
+      "isAvailable": true,
+      "averageRating": 4.8,
+      "images": [
+        "https://picsum.photos/seed/Milk1/800/600",
+        "https://picsum.photos/seed/Milk2/800/600",
+        "https://picsum.photos/seed/Milk3/800/600",
+        "https://picsum.photos/seed/Milk4/800/600"
+      ]
+    },
+    {
+      "name": "Bread",
+      "owner": "65ffb707693951f2e865f12b",
+      "description": "A loaf of freshly baked whole wheat bread.",
+      "price": 3.5,
+      "category": "grocery",
+      "stock": 400,
+      "isAvailable": true,
+      "averageRating": 4.7,
+      "images": [
+        "https://picsum.photos/seed/Bread1/800/600",
+        "https://picsum.photos/seed/Bread2/800/600",
+        "https://picsum.photos/seed/Bread3/800/600",
+        "https://picsum.photos/seed/Bread4/800/600"
+      ]
+    },
+    {
+      "name": "Eggs",
+      "owner": "65ffb707693951f2e865f12c",
+      "description": "A dozen free-range, organic eggs.",
+      "price": 6.0,
+      "category": "grocery",
+      "stock": 250,
+      "isAvailable": true,
+      "averageRating": 4.9,
+      "images": [
+        "https://picsum.photos/seed/Eggs1/800/600",
+        "https://picsum.photos/seed/Eggs2/800/600",
+        "https://picsum.photos/seed/Eggs3/800/600",
+        "https://picsum.photos/seed/Eggs4/800/600"
+      ]
+    },
+    {
+      "name": "Bananas",
+      "owner": "65ffb707693951f2e865f12b",
+      "description": "A bunch of ripe, organic bananas.",
+      "price": 2.5,
+      "category": "grocery",
+      "stock": 600,
+      "isAvailable": true,
+      "averageRating": 4.6,
+      "images": [
+        "https://picsum.photos/seed/Bananas1/800/600",
+        "https://picsum.photos/seed/Bananas2/800/600",
+        "https://picsum.photos/seed/Bananas3/800/600",
+        "https://picsum.photos/seed/Bananas4/800/600"
+      ]
+    },
+    {
+      "name": "Cereal",
+      "owner": "65ffb707693951f2e865f12c",
+      "description": "A box of healthy, whole-grain cereal.",
+      "price": 4.5,
+      "category": "grocery",
+      "stock": 350,
+      "isAvailable": true,
+      "averageRating": 4.5,
+      "images": [
+        "https://picsum.photos/seed/Cereal1/800/600",
+        "https://picsum.photos/seed/Cereal2/800/600",
+        "https://picsum.photos/seed/Cereal3/800/600",
+        "https://picsum.photos/seed/Cereal4/800/600"
+      ]
+    },
+    {
+      "name": "Smartphone X",
+      "owner": "65ffb707693951f2e865f12c",
+      "description": "The latest smartphone with a stunning display and powerful camera.",
+      "price": 999.0,
+      "category": "mobile",
+      "stock": 100,
+      "isAvailable": true,
+      "averageRating": 4.9,
+      "images": [
+        "https://picsum.photos/seed/SmartphoneX1/800/600",
+        "https://picsum.photos/seed/SmartphoneX2/800/600",
+        "https://picsum.photos/seed/SmartphoneX3/800/600",
+        "https://picsum.photos/seed/SmartphoneX4/800/600"
+      ]
+    },
+    {
+      "name": "Budget Smartphone Y",
+      "owner": "65ffb707693951f2e865f12b",
+      "description": "A reliable and affordable smartphone for everyday use.",
+      "price": 199.0,
+      "category": "mobile",
+      "stock": 150,
+      "isAvailable": true,
+      "averageRating": 4.4,
+      "images": [
+        "https://picsum.photos/seed/SmartphoneY1/800/600",
+        "https://picsum.photos/seed/SmartphoneY2/800/600",
+        "https://picsum.photos/seed/SmartphoneY3/800/600",
+        "https://picsum.photos/seed/SmartphoneY4/800/600"
+      ]
+    },
+    {
+      "name": "Gaming Phone Z",
+      "owner": "65ffb707693951f2e865f12c",
+      "description": "A high-performance phone designed for gaming.",
+      "price": 799.0,
+      "category": "mobile",
+      "stock": 50,
+      "isAvailable": true,
+      "averageRating": 4.8,
+      "images": [
+        "https://picsum.photos/seed/GamingPhone1/800/600",
+        "https://picsum.photos/seed/GamingPhone2/800/600",
+        "https://picsum.photos/seed/GamingPhone3/800/600",
+        "https://picsum.photos/seed/GamingPhone4/800/600"
+      ]
+    },
+    {
+      "name": "Compact Phone A",
+      "owner": "65ffb707693951f2e865f12b",
+      "description": "A small and powerful smartphone for one-handed use.",
+      "price": 499.0,
+      "category": "mobile",
+      "stock": 80,
+      "isAvailable": true,
+      "averageRating": 4.6,
+      "images": [
+        "https://picsum.photos/seed/CompactPhone1/800/600",
+        "https://picsum.photos/seed/CompactPhone2/800/600",
+        "https://picsum.photos/seed/CompactPhone3/800/600",
+        "https://picsum.photos/seed/CompactPhone4/800/600"
+      ]
+    },
+    {
+      "name": "Tablet Pro",
+      "owner": "65ffb707693951f2e865f12c",
+      "description": "A versatile tablet for work and entertainment.",
+      "price": 699.0,
+      "category": "mobile",
+      "stock": 60,
+      "isAvailable": true,
+      "averageRating": 4.7,
+      "images": [
+        "https://picsum.photos/seed/TabletPro1/800/600",
+        "https://picsum.photos/seed/TabletPro2/800/600",
+        "https://picsum.photos/seed/TabletPro3/800/600",
+        "https://picsum.photos/seed/TabletPro4/800/600"
+      ]
+    },
+    {
+      "name": "Foldable Phone",
+      "owner": "65ffb707693951f2e865f12b",
+      "description": "A cutting-edge foldable smartphone with a large display.",
+      "price": 1499.0,
+      "category": "mobile",
+      "stock": 20,
+      "isAvailable": true,
+      "averageRating": 4.9,
+      "images": [
+        "https://picsum.photos/seed/FoldablePhone1/800/600",
+        "https://picsum.photos/seed/FoldablePhone2/800/600",
+        "https://picsum.photos/seed/FoldablePhone3/800/600",
+        "https://picsum.photos/seed/FoldablePhone4/800/600"
+      ]
+    },
+    {
+      "name": "Summer Dress",
+      "owner": "65ffb707693951f2e865f12b",
+      "description": "A light and airy summer dress, perfect for warm weather.",
+      "price": 75.0,
+      "category": "fashion",
+      "stock": 80,
+      "isAvailable": true,
+      "averageRating": 4.7,
+      "images": [
+        "https://picsum.photos/seed/SummerDress1/800/600",
+        "https://picsum.photos/seed/SummerDress2/800/600",
+        "https://picsum.photos/seed/SummerDress3/800/600",
+        "https://picsum.photos/seed/SummerDress4/800/600"
+      ]
+    },
+    {
+      "name": "Leather Wallet",
+      "owner": "65ffb707693951f2e865f12c",
+      "description": "A stylish and durable leather wallet with multiple compartments.",
+      "price": 45.0,
+      "category": "fashion",
+      "stock": 150,
+      "isAvailable": true,
+      "averageRating": 4.7,
+      "images": [
+        "https://picsum.photos/seed/LeatherWallet1/800/600",
+        "https://picsum.photos/seed/LeatherWallet2/800/600",
+        "https://picsum.photos/seed/LeatherWallet3/800/600",
+        "https://picsum.photos/seed/LeatherWallet4/800/600"
+      ]
+    },
+    {
+      "name": "Running Shoes",
+      "owner": "65ffb707693951f2e865f12b",
+      "description": "Lightweight and durable running shoes for daily workouts.",
+      "price": 99.99,
+      "category": "fashion",
+      "stock": 100,
+      "isAvailable": true,
+      "averageRating": 4.8,
+      "images": [
+        "https://picsum.photos/seed/RunningShoes1/800/600",
+        "https://picsum.photos/seed/RunningShoes2/800/600",
+        "https://picsum.photos/seed/RunningShoes3/800/600",
+        "https://picsum.photos/seed/RunningShoes4/800/600"
+      ]
+    },
+    {
+      "name": "Sunglasses",
+      "owner": "65ffb707693951f2e865f12c",
+      "description": "Stylish UV-protected sunglasses for everyday use.",
+      "price": 35.0,
+      "category": "fashion",
+      "stock": 200,
+      "isAvailable": true,
+      "averageRating": 4.6,
+      "images": [
+        "https://picsum.photos/seed/Sunglasses1/800/600",
+        "https://picsum.photos/seed/Sunglasses2/800/600",
+        "https://picsum.photos/seed/Sunglasses3/800/600",
+        "https://picsum.photos/seed/Sunglasses4/800/600"
+      ]
+    },
+    {
+      "name": "Leather Belt",
+      "owner": "65ffb707693951f2e865f12b",
+      "description": "A classic leather belt for formal and casual wear.",
+      "price": 40.0,
+      "category": "fashion",
+      "stock": 120,
+      "isAvailable": true,
+      "averageRating": 4.5,
+      "images": [
+        "https://picsum.photos/seed/LeatherBelt1/800/600",
+        "https://picsum.photos/seed/LeatherBelt2/800/600",
+        "https://picsum.photos/seed/LeatherBelt3/800/600",
+        "https://picsum.photos/seed/LeatherBelt4/800/600"
+      ]
+    },
+    {
+      "name": "Backpack",
+      "owner": "65ffb707693951f2e865f12c",
+      "description": "A durable and spacious backpack for travel and daily use.",
+      "price": 60.0,
+      "category": "fashion",
+      "stock": 90,
+      "isAvailable": true,
+      "averageRating": 4.7,
+      "images": [
+        "https://picsum.photos/seed/Backpack1/800/600",
+        "https://picsum.photos/seed/Backpack2/800/600",
+        "https://picsum.photos/seed/Backpack3/800/600",
+        "https://picsum.photos/seed/Backpack4/800/600"
+      ]
+    },
+    {
+      "name": "Building Blocks Set",
+      "owner": "65ffb707693951f2e865f12c",
+      "description": "A 500-piece building block set for endless creative fun.",
+      "price": 50.0,
+      "category": "toys",
+      "stock": 120,
+      "isAvailable": true,
+      "averageRating": 4.8,
+      "images": [
+        "https://picsum.photos/seed/BuildingBlocks1/800/600",
+        "https://picsum.photos/seed/BuildingBlocks2/800/600",
+        "https://picsum.photos/seed/BuildingBlocks3/800/600",
+        "https://picsum.photos/seed/BuildingBlocks4/800/600"
+      ]
+    },
+    {
+      "name": "Action Figure",
+      "owner": "65ffb707693951f2e865f12b",
+      "description": "A detailed action figure of a popular superhero.",
+      "price": 20.0,
+      "category": "toys",
+      "stock": 300,
+      "isAvailable": true,
+      "averageRating": 4.7,
+      "images": [
+        "https://picsum.photos/seed/ActionFigure1/800/600",
+        "https://picsum.photos/seed/ActionFigure2/800/600",
+        "https://picsum.photos/seed/ActionFigure3/800/600",
+        "https://picsum.photos/seed/ActionFigure4/800/600"
+      ]
+    },
+    {
+      "name": "RC Car",
+      "owner": "65ffb707693951f2e865f12c",
+      "description": "A fast and responsive remote-controlled car.",
+      "price": 45.0,
+      "category": "toys",
+      "stock": 80,
+      "isAvailable": true,
+      "averageRating": 4.6,
+      "images": [
+        "https://picsum.photos/seed/RCCar1/800/600",
+        "https://picsum.photos/seed/RCCar2/800/600",
+        "https://picsum.photos/seed/RCCar3/800/600",
+        "https://picsum.photos/seed/RCCar4/800/600"
+      ]
+    },
+    {
+      "name": "Dollhouse",
+      "owner": "65ffb707693951f2e865f12b",
+      "description": "A beautiful and detailed dollhouse with furniture.",
+      "price": 100.0,
+      "category": "toys",
+      "stock": 40,
+      "isAvailable": true,
+      "averageRating": 4.9,
+      "images": [
+        "https://picsum.photos/seed/Dollhouse1/800/600",
+        "https://picsum.photos/seed/Dollhouse2/800/600",
+        "https://picsum.photos/seed/Dollhouse3/800/600",
+        "https://picsum.photos/seed/Dollhouse4/800/600"
+      ]
+    },
+    {
+      "name": "Board Game",
+      "owner": "65ffb707693951f2e865f12c",
+      "description": "A fun and strategic board game for the whole family.",
+      "price": 35.0,
+      "category": "toys",
+      "stock": 150,
+      "isAvailable": true,
+      "averageRating": 4.8,
+      "images": [
+        "https://picsum.photos/seed/BoardGame1/800/600",
+        "https://picsum.photos/seed/BoardGame2/800/600",
+        "https://picsum.photos/seed/BoardGame3/800/600",
+        "https://picsum.photos/seed/BoardGame4/800/600"
+      ]
+    },
+    {
+      "name": "Plush Toy",
+      "owner": "65ffb707693951f2e865f12b",
+      "description": "A soft and cuddly plush toy for children.",
+      "price": 25.0,
+      "category": "toys",
+      "stock": 200,
+      "isAvailable": true,
+      "averageRating": 4.7,
+      "images": [
+        "https://picsum.photos/seed/PlushToy1/800/600",
+        "https://picsum.photos/seed/PlushToy2/800/600",
+        "https://picsum.photos/seed/PlushToy3/800/600",
+        "https://picsum.photos/seed/PlushToy4/800/600"
+      ]
+    }
+  ]
+}
