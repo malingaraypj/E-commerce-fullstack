@@ -1,5 +1,5 @@
-import React from "react";
-import { ScrollArea } from "@radix-ui/react-scroll-area";
+import React, { useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import ItemCard from "./ItemCard";
 import type { Product } from "@/models/product";
 
@@ -14,35 +14,84 @@ const ProductSlider: React.FC<ProductSliderProps> = ({
   category,
   idx,
 }) => {
-  if (!filteredItems.length) return null; // Skip empty categories
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const slideNext = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex >= filteredItems.length - 3 ? 0 : prevIndex + 1
+    );
+  };
+
+  const slidePrev = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex <= 0 ? filteredItems.length - 3 : prevIndex - 1
+    );
+  };
+
+  useEffect(() => {
+    const slideInterval = setInterval(slideNext, 5000);
+    return () => clearInterval(slideInterval);
+  }, [currentIndex, slideNext]);
+
+  if (!filteredItems.length) return null;
 
   return (
-    <ScrollArea
-      key={category}
-      className={`flex flex-col gap-6 p-6 rounded-2xl shadow-lg 
-        ${
-          idx % 2 === 0
-            ? "bg-gradient-to-r from-blue-100 to-blue-200"
-            : "bg-gradient-to-r from-green-100 to-green-200"
-        }`}
+    <div
+      className={`relative w-full overflow-hidden rounded-2xl shadow-lg p-6 ${
+        idx % 2 === 0
+          ? "bg-gradient-to-r from-blue-100 to-blue-200"
+          : "bg-gradient-to-r from-green-100 to-green-200"
+      }`}
     >
-      {/* Category Title */}
-      <div className="border-b border-gray-300 pb-2">
+      <div className="border-b border-gray-300 pb-2 mb-6">
         <h2 className="text-2xl font-bold text-gray-900">{category}</h2>
       </div>
 
-      {/* Horizontal Cards Slider */}
-      <div className="flex w-full gap-5 overflow-x-auto pb-2 scroll-smooth">
+      <div
+        className="flex transition-transform duration-500 ease-in-out"
+        style={{ transform: `translateX(-${(currentIndex * 100) / 3}%)` }}
+      >
         {filteredItems.map((item, index) => (
           <div
             key={`${category}-${index}`}
-            className="flex-shrink-0 w-[1200px]"
+            className="w-1/3 flex-shrink-0 px-2"
           >
             <ItemCard data={item} />
           </div>
         ))}
       </div>
-    </ScrollArea>
+
+      {/* Navigation Buttons */}
+      <button
+        onClick={slidePrev}
+        className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-slate-700 text-white rounded-full p-2 hover:bg-slate-800 transition"
+      >
+        <ChevronLeft size={24} />
+      </button>
+      <button
+        onClick={slideNext}
+        className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-slate-700 text-white rounded-full p-2 hover:bg-slate-800 transition"
+      >
+        <ChevronRight size={24} />
+      </button>
+
+      {/* Indicator Dots */}
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+        {Array.from({ length: Math.ceil(filteredItems.length / 3) }).map(
+          (_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentIndex(index * 3)}
+              className={`h-2 w-2 rounded-full ${
+                Math.floor(currentIndex / 3) === index
+                  ? "bg-slate-800"
+                  : "bg-gray-400"
+              }`}
+            />
+          )
+        )}
+      </div>
+    </div>
   );
 };
 
