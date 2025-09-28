@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { useDispatch } from "react-redux";
-import type { AppDispatch } from "@/store/store";
 
 // API
 import { getProductById } from "@/api/product";
@@ -13,13 +11,12 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Skeleton } from "@/components/ui/skeleton";
-import { addToCart } from "@/store/reducers/cartSlice";
 import ReviewSection from "@/components/productDetails/ReviewComponent";
 import type { Product } from "@/models/product";
+import CartDrawer from "@/components/cart/cartDrawer";
 
 const ProductDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const dispatch: AppDispatch = useDispatch();
 
   const {
     data: product,
@@ -154,12 +151,7 @@ const ProductDetails: React.FC = () => {
 
           {/* Actions */}
           <div className="mt-6 flex gap-4">
-            <Button
-              onClick={() => dispatch(addToCart(product))}
-              disabled={!product.stock}
-            >
-              Add to Cart
-            </Button>
+            <CartDrawer product={product} />
             <Button variant="secondary" disabled={!product.stock}>
               Buy Now
             </Button>
