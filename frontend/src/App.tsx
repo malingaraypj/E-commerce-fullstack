@@ -4,6 +4,7 @@ import NavBarWrapper from "./components/Nav/NavBarWrapper";
 import ProductDetails from "./pages/productDetails";
 import RegisterPage from "./pages/Register.page";
 import LoginPage from "./pages/Login.page";
+import ApplySeller from "./pages/ApplySeller.page";
 
 function App() {
   const router = createBrowserRouter([
@@ -22,6 +23,10 @@ function App() {
     {
       path: "/login",
       element: <LoginPage />,
+    },
+    {
+      path: "/apply-seller",
+      element: <ApplySeller />,
     },
   ]);
   return <RouterProvider router={router} />;
