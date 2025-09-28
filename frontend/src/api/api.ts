@@ -24,3 +24,24 @@ export const getData = async (url: string) => {
     throw err;
   }
 };
+
+export const postData = async <T = unknown>(url: string, data: T) => {
+  const token = localStorage.getItem("token");
+
+  const config = {
+    headers: {} as { Authorization?: string },
+  };
+
+  if (token) {
+    config.headers["Authorization"] = `Bearer ${token}`;
+  }
+
+  try {
+    const response = await axios.post(url, data, config);
+
+    return response.data?.data;
+  } catch (err) {
+    console.error(`Error fetching data from ${url}:`, err);
+    throw err;
+  }
+};

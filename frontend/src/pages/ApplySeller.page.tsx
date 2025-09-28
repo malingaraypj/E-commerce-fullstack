@@ -23,6 +23,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
+import { submitSellerApplication } from "@/api/seller";
 
 // Define an address type for reuse
 type Address = {
@@ -33,19 +34,21 @@ type Address = {
   postalCode: string;
 };
 
+export type SellerApplicationData = {
+  businessName: string;
+  businessType: string;
+  businessDescription: string;
+  contactPhone: string;
+  governmentId: string;
+  pickupAddress: Address;
+  returnAddress: Address;
+  taxId: string;
+  intendedCategories: string | string[];
+};
+
 //  FormState to match the sellerSchema
 type FormState = {
-  enteredValues: {
-    businessName: string;
-    businessType: string;
-    businessDescription: string;
-    contactPhone: string;
-    governmentId: string;
-    pickupAddress: Address;
-    returnAddress: Address;
-    taxId: string;
-    intendedCategories: string;
-  };
+  enteredValues: SellerApplicationData;
   error: string;
   success: boolean;
 };
@@ -117,7 +120,7 @@ function ApplySeller() {
     }
 
     // --- API Payload ---
-    const apiPayload = {
+    const apiPayload: SellerApplicationData = {
       ...enteredValues,
       // Convert categories string to array for the API
       intendedCategories: intendedCategories
@@ -127,11 +130,7 @@ function ApplySeller() {
     };
 
     try {
-      // Uncomment and use your actual API endpoint
-      // await axios.post(
-      //   `${import.meta.env.VITE_BACKEND_URL}/seller/apply`,
-      //   apiPayload
-      // );
+      submitSellerApplication(apiPayload);
       console.log("API Payload:", apiPayload);
 
       return {
