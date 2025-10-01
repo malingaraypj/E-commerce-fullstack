@@ -22,12 +22,12 @@ const ItemCard: React.FC<ItemCardProps> = ({ data }) => {
 
   return (
     <Card
-      className="relative w-full h-[420px] rounded-xl shadow-md hover:shadow-xl transition-transform duration-300 transform hover:scale-105 overflow-hidden bg-white flex flex-col"
+      className="relative w-full h-[420px] rounded-xl shadow-sm hover:shadow-lg transition-transform duration-300 transform hover:-translate-y-1 overflow-hidden bg-card flex flex-col product-card-hover"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
       {/* Product Image */}
-      <div className="relative p-3 bg-white h-48 flex-shrink-0">
+      <div className="relative p-3 bg-muted/30 h-48 flex-shrink-0">
         <img
           src={data.images[0] ? data.images[0] : dummyImg}
           alt={data.name}
@@ -40,7 +40,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ data }) => {
             {data.badges.map((badge, idx) => (
               <span
                 key={idx}
-                className="bg-blue-500 text-white text-xs px-2 py-1 rounded-md shadow"
+                className="bg-primary/90 text-primary-foreground text-xs px-2 py-1 rounded-md shadow-sm"
               >
                 {badge}
               </span>
@@ -54,32 +54,32 @@ const ItemCard: React.FC<ItemCardProps> = ({ data }) => {
         <div>
           <CardHeader className="p-0 mb-2">
             {data.brand && (
-              <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">
+              <p className="text-xs text-muted-foreground uppercase tracking-wide mb-1">
                 {data.brand}
               </p>
             )}
-            <CardTitle className="text-lg font-semibold text-gray-800 line-clamp-1">
+            <CardTitle className="text-lg font-semibold text-card-foreground line-clamp-1">
               {data.name}
             </CardTitle>
-            <CardDescription className="text-sm text-gray-500 line-clamp-2 h-10">
+            <CardDescription className="text-sm text-muted-foreground line-clamp-2 h-10">
               {data.description}
             </CardDescription>
           </CardHeader>
 
           {/* Price */}
           <div className="flex items-center gap-2 mb-2">
-            <p className="text-xl font-bold text-blue-600">
+            <p className="text-xl font-bold text-primary">
               ${data.price?.toFixed(2)}
             </p>
             {data.originalPrice && (
-              <p className="text-sm text-gray-400 line-through">
+              <p className="text-sm text-muted-foreground line-through">
                 ${data.originalPrice.toFixed(2)}
               </p>
             )}
           </div>
 
           {/* Rating */}
-          <div className="flex items-center gap-1 text-sm text-gray-600 mb-1">
+          <div className="flex items-center gap-1 text-sm text-muted-foreground mb-1">
             {Array.from({ length: 5 }, (_, i) => (
               <Star
                 key={i}
@@ -87,20 +87,22 @@ const ItemCard: React.FC<ItemCardProps> = ({ data }) => {
                 className={
                   i < Math.floor(data.averageRating)
                     ? "fill-yellow-400 text-yellow-400"
-                    : "text-gray-300"
+                    : "text-muted-foreground/40"
                 }
               />
             ))}
             <span className="ml-1">{data.averageRating?.toFixed(1)}</span>
             {data.reviewCount !== undefined && (
-              <span className="text-gray-400">({data.reviewCount})</span>
+              <span className="text-muted-foreground/70">
+                ({data.reviewCount})
+              </span>
             )}
           </div>
 
           {/* Stock Info */}
           <p
             className={`mt-1 text-xs font-medium ${
-              data.stock > 0 ? "text-green-600" : "text-red-500"
+              data.stock > 0 ? "text-green-600" : "text-destructive"
             }`}
           >
             {data.stock > 0 ? "In Stock" : "Out of Stock"}
@@ -121,8 +123,8 @@ const ItemCard: React.FC<ItemCardProps> = ({ data }) => {
           onClick={() => navigate(`/products/${data.id}`)}
           className={`w-full rounded-lg py-2 transition-transform duration-200 ${
             data.stock > 0
-              ? "bg-blue-500 text-white hover:bg-blue-600 hover:scale-105 cursor-pointer"
-              : "bg-gray-300 text-gray-500 cursor-not-allowed"
+              ? "bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 cursor-pointer"
+              : "bg-muted text-muted-foreground cursor-not-allowed"
           }`}
         >
           {data.stock > 0 ? "Add to Cart" : "Currently Unavailable"}
