@@ -5,15 +5,23 @@ import ProductDetails from "./pages/productDetails";
 import RegisterPage from "./pages/Register.page";
 import LoginPage from "./pages/Login.page";
 import ApplySeller from "./pages/ApplySeller.page";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <NavBarWrapper />,
+      // Wrap the main layout with ProtectedRoute
+      element: (
+        <ProtectedRoute>
+          <NavBarWrapper />
+        </ProtectedRoute>
+      ),
+      // All children of this route are now protected
       children: [
         { index: true, element: <LandingPage /> },
         { path: "products/:id", element: <ProductDetails /> },
+        { path: "apply-seller", element: <ApplySeller /> },
       ],
     },
     {
@@ -24,11 +32,8 @@ function App() {
       path: "/login",
       element: <LoginPage />,
     },
-    {
-      path: "/apply-seller",
-      element: <ApplySeller />,
-    },
   ]);
+
   return <RouterProvider router={router} />;
 }
 

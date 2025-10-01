@@ -78,6 +78,6 @@ sellerSchema.pre(/^findOne/, function (next) {
   next();
 });
 
-const Seller = mongoose.model("SellerApplication", sellerSchema);
+const Seller = mongoose.model("Seller", sellerSchema);
 
 export default Seller;

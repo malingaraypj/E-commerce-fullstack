@@ -12,18 +12,14 @@ type LoginResult = {
 // This is the thunk action creator
 export const loginUser = (email: string, password: string) => {
   return async (dispatch: AppDispatch): Promise<LoginResult> => {
-    console.log("inside action thunk");
     try {
       const response = await loginAPI({ email, password });
 
       const user = response.data?.data;
-      console.log(user);
+      const token = response.data?.token;
 
       if (user) {
-        dispatch(login(user));
-
-        localStorage.setItem("token", response.data?.token);
-        localStorage.setItem("user", JSON.stringify(user));
+        dispatch(login({ user, token }));
         return { success: true };
       } else {
         return { success: false, message: "Login failed: No user data found." };
