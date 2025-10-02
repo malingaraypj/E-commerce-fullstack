@@ -1,7 +1,10 @@
 import { baseUrl, getData, patchData } from "./api";
 
-export const getSellerApplications = async (signal: AbortSignal) => {
-  const url = `${baseUrl}/admin/sellerApplications`;
+export const getSellerApplications = async (
+  signal: AbortSignal,
+  status?: string
+) => {
+  const url = `${baseUrl}/admin/sellerApplications/${status ? status : ""}`;
   return getData(url, signal);
 };
 

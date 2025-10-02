@@ -8,14 +8,13 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import ApplicationCardDescription from "./ApplicationCardDescription";
+import { useValidationApplications } from "@/hooks/useValidateApplications";
 
 // A type for the application data, matching the Seller model
 export type SellerApplication = {
   _id: string;
   businessName: string;
   businessType: string;
-  businessDescription: string;
   applicationStatus: "pending" | "approved" | "rejected";
   user: {
     name: string;
@@ -27,15 +26,9 @@ export type SellerApplication = {
 
 type ApplicationCardProps = {
   application: SellerApplication;
-  onApprove: (id: string) => void;
-  onReject: (id: string) => void;
 };
 
-const ApplicationCard = ({
-  application,
-  onApprove,
-  onReject,
-}: ApplicationCardProps) => {
+const ApplicationCard = ({ application }: ApplicationCardProps) => {
   const getStatusVariant = (status: string) => {
     switch (status) {
       case "approved":
@@ -47,8 +40,11 @@ const ApplicationCard = ({
     }
   };
 
+  // 2. Define mutation hook for approving/rejecting
+  const { mutate } = useValidationApplications();
+
   return (
-    <Card className="flex flex-col h-[280px]">
+    <Card className="flex flex-col min-h-[150px]">
       <CardHeader>
         <div className="flex justify-between items-start">
           <div>
@@ -75,20 +71,26 @@ const ApplicationCard = ({
             {new Date(application.createdAt).toLocaleDateString()}
           </p>
         </div>
-
-        <ApplicationCardDescription
-          triggerText="Desciption"
-          contentText={application.businessDescription}
-        />
       </CardContent>
 
       {/* Only show buttons for pending applications */}
       {application.applicationStatus === "pending" && (
         <CardFooter className="flex justify-end gap-2 pt-4">
-          <Button variant="outline" onClick={() => onReject(application._id)}>
+          <Button
+            variant="outline"
+            onClick={() =>
+              mutate({ id: application._id, validationType: "reject" })
+            }
+          >
             Reject
           </Button>
-          <Button onClick={() => onApprove(application._id)}>Approve</Button>
+          <Button
+            onClick={() =>
+              mutate({ id: application._id, validationType: "approve" })
+            }
+          >
+            Approve
+          </Button>
         </CardFooter>
       )}
     </Card>
