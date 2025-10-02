@@ -6,6 +6,7 @@ import RegisterPage from "./pages/Register.page";
 import LoginPage from "./pages/Login.page";
 import ApplySeller from "./pages/ApplySeller.page";
 import ProtectedRoute from "./components/ProtectedRoute";
+import SellerApplicationsPage from "./pages/adminDashBoard";
 
 function App() {
   const router = createBrowserRouter([
@@ -22,6 +23,7 @@ function App() {
         { index: true, element: <LandingPage /> },
         { path: "products/:id", element: <ProductDetails /> },
         { path: "apply-seller", element: <ApplySeller /> },
+        { path: "seller-applications", element: <SellerApplicationsPage /> },
       ],
     },
     {

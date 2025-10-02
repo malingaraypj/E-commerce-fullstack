@@ -70,10 +70,10 @@ sellerSchema.pre("save", async function (next) {
   next();
 });
 
-sellerSchema.pre(/^findOne/, function (next) {
+sellerSchema.pre(/^find/, function (next) {
   this.populate({
     path: "user",
-    // select: "name email contactPhone",
+    select: "name email",
   });
   next();
 });
