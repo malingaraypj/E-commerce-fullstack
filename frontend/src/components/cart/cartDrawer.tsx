@@ -11,22 +11,18 @@ import {
 import { Button } from "../ui/button";
 import ItemCard from "../Landing/ItemCard";
 
-import {
-  addToCart,
-  removeFromCart,
-  updateCartCount,
-} from "@/store/reducers/cartSlice";
+import { removeFromCart, updateCartCount } from "@/store/reducers/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import type { AppDispatch, RootState } from "@/store/store";
-import type { Product } from "@/models/product";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight, Trash2 } from "lucide-react";
 
-const CartDrawer: React.FC<{ product: Product }> = ({ product }) => {
+const CartDrawer: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const dispatch: AppDispatch = useDispatch();
   const cartProducts = useSelector((state: RootState) => state.cart);
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (cartProducts.length === 0) {
@@ -39,30 +35,30 @@ const CartDrawer: React.FC<{ product: Product }> = ({ product }) => {
   }, [cartProducts.length, currentIndex]);
 
   const handlePrev = () => {
-    setCurrentIndex((prev) => {
-      return prev === 0 ? cartProducts.length - 1 : prev - 1;
-    });
+    setCurrentIndex((prev) =>
+      prev === 0 ? cartProducts.length - 1 : prev - 1
+    );
   };
 
   const handleNext = () => {
-    setCurrentIndex((prev) => {
-      return (prev + 1) % cartProducts.length;
-    });
+    setCurrentIndex((prev) => (prev + 1) % cartProducts.length);
   };
 
   const currentItem =
     cartProducts.length > 0 ? cartProducts[currentIndex] : null;
   const isCartEmpty = cartProducts.length === 0;
 
-  return (
-    <Drawer>
-      <DrawerTrigger
-        onClick={() => dispatch(addToCart(product))}
-        className="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition"
-      >
-        Add to Cart
-      </DrawerTrigger>
+  const handleOpenChange = (open: boolean) => {
+    if (open) {
+      setTimeout(() => {
+        closeButtonRef.current?.focus();
+      }, 100);
+    }
+  };
 
+  return (
+    <Drawer onOpenChange={handleOpenChange}>
+      <DrawerTrigger asChild>{children}</DrawerTrigger>
       <DrawerContent className="max-w-lg mx-auto flex flex-col h-[95dvh]">
         <DrawerHeader className="text-center">
           <DrawerTitle className="text-2xl font-bold">Your Cart</DrawerTitle>
@@ -81,7 +77,12 @@ const CartDrawer: React.FC<{ product: Product }> = ({ product }) => {
           ) : (
             <div className="flex flex-col items-center gap-4">
               <div className="flex items-center justify-center w-full gap-2">
-                <Button onClick={handlePrev} variant="outline" size="icon">
+                <Button
+                  onClick={handlePrev}
+                  variant="outline"
+                  size="icon"
+                  disabled={cartProducts.length <= 1}
+                >
                   <ChevronLeft />
                 </Button>
 
@@ -137,7 +138,12 @@ const CartDrawer: React.FC<{ product: Product }> = ({ product }) => {
                   </div>
                 )}
 
-                <Button onClick={handleNext} variant="outline" size="icon">
+                <Button
+                  onClick={handleNext}
+                  variant="outline"
+                  size="icon"
+                  disabled={cartProducts.length <= 1}
+                >
                   <ChevronRight />
                 </Button>
               </div>
@@ -153,7 +159,8 @@ const CartDrawer: React.FC<{ product: Product }> = ({ product }) => {
             Proceed to Checkout
           </Button>
           <DrawerClose asChild>
-            <Button variant="outline" className="w-full">
+            {/* 💡 STEP 5: Attach the ref to the button */}
+            <Button variant="outline" className="w-full" ref={closeButtonRef}>
               Continue Shopping
             </Button>
           </DrawerClose>

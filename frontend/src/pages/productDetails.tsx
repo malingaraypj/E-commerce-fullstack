@@ -11,12 +11,18 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Skeleton } from "@/components/ui/skeleton";
+
+//  custom components
 import ReviewSection from "@/components/productDetails/ReviewComponent";
 import type { Product } from "@/models/product";
-import CartDrawer from "@/components/cart/cartDrawer";
+
+// redux
+import { useDispatch } from "react-redux";
+import { addToCart } from "@/store/reducers/cartSlice";
 
 const ProductDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
+  const dispatch = useDispatch();
 
   const {
     data: product,
@@ -151,7 +157,9 @@ const ProductDetails: React.FC = () => {
 
           {/* Actions */}
           <div className="mt-6 flex gap-4">
-            <CartDrawer product={product} />
+            <Button onClick={() => dispatch(addToCart(product))}>
+              Add to Cart
+            </Button>
             <Button variant="secondary" disabled={!product.stock}>
               Buy Now
             </Button>

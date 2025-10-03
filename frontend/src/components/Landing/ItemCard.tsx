@@ -110,7 +110,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ data }) => {
         </div>
       </CardContent>
 
-      {/* Add to Cart */}
+      {/* move to product details */}
       <motion.div
         initial={{ y: 80, opacity: 0 }}
         animate={hovered ? { y: 0, opacity: 1 } : { y: 80, opacity: 0 }}
@@ -127,7 +127,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ data }) => {
               : "bg-muted text-muted-foreground cursor-not-allowed"
           }`}
         >
-          {data.stock > 0 ? "Add to Cart" : "Currently Unavailable"}
+          {data.stock > 0 ? "View Details" : "Currently Unavailable"}
         </button>
       </motion.div>
     </Card>

@@ -3,8 +3,12 @@ import SearchInput from "./SearchInput";
 import IconButton from "../Global/IconButton";
 import Logo from "../Global/Logo";
 import UserOptionDropDown from "./userOptionDropdown";
+import CartDrawer from "../cart/cartDrawer";
+import { useSelector } from "react-redux";
+import type { RootState } from "@/store/store";
 
 function NavBar() {
+  const cartProducts = useSelector((state: RootState) => state.cart.length);
   return (
     <nav className="w-full h-16 flex justify-between items-center px-6 border-b border-border bg-card shadow-sm sticky top-0 z-50">
       {/* Left: Logo */}
@@ -15,18 +19,19 @@ function NavBar() {
       {/* Right: Search, User, Cart */}
       <div className="flex items-center gap-4">
         <SearchInput />
-        {/* <UserLoginButton /> */}
         <UserOptionDropDown />
-        <IconButton
-          Icon={FaCartShopping}
-          className="relative bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-2 rounded-lg shadow-sm transition transform hover:scale-105"
-        >
-          Cart
-          {/* Example Badge (if you want to show cart items count) */}
-          <span className="absolute -top-1 -right-1 bg-destructive text-white text-xs font-medium px-1.5 py-0.5 rounded-full shadow-sm">
-            2
-          </span>
-        </IconButton>
+        <CartDrawer>
+          <IconButton
+            Icon={FaCartShopping}
+            className="relative bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-2 rounded-lg shadow-sm transition transform hover:scale-105"
+          >
+            Cart
+            {/* Example Badge (if you want to show cart items count) */}
+            <span className="absolute -top-1 -right-1 bg-destructive text-white text-xs font-medium px-1.5 py-0.5 rounded-full shadow-sm">
+              {cartProducts}
+            </span>
+          </IconButton>
+        </CartDrawer>
       </div>
     </nav>
   );
