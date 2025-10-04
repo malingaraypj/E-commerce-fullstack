@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
@@ -6,10 +6,8 @@ import { useQuery } from "@tanstack/react-query";
 import { getProductById } from "@/api/product";
 
 // Shadcn UI components
-import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Skeleton } from "@/components/ui/skeleton";
 
 //  custom components
@@ -19,6 +17,7 @@ import type { Product } from "@/models/product";
 // redux
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/store/reducers/cartSlice";
+import ImageGallery from "@/components/productDetails/ImageGallery";
 
 const ProductDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -30,19 +29,9 @@ const ProductDetails: React.FC = () => {
     isError,
   } = useQuery<Product>({
     queryKey: ["product", id],
-    queryFn: () => getProductById(id!),
+    queryFn: ({ signal }) => getProductById(id!, signal),
     enabled: !!id,
   });
-
-  const [selectedImage, setSelectedImage] = useState<string | undefined>(
-    product?.images[0]
-  );
-
-  React.useEffect(() => {
-    if (product?.images?.length) {
-      setSelectedImage(product.images[0]);
-    }
-  }, [product]);
 
   if (isLoading) {
     return (
@@ -60,6 +49,8 @@ const ProductDetails: React.FC = () => {
     );
   }
 
+  console.log(product);
+
   const discount =
     product.originalPrice &&
     Math.round(
@@ -70,33 +61,7 @@ const ProductDetails: React.FC = () => {
     <div className="bg-gradient-to-br from-amber-50 to-amber-100 h-full py-5">
       <div className="max-w-6xl mx-auto p-6 grid md:grid-cols-2 gap-8 bg-blue-100">
         {/* Left: Image Gallery */}
-        <div>
-          <Card className="overflow-hidden">
-            <img
-              src={selectedImage}
-              alt={product.name}
-              className="w-full h-96 object-cover"
-            />
-            <ScrollArea className="w-full rounded-md border whitespace-nowrap">
-              <div className="flex gap-2 p-4">
-                {product.images.map((img, idx) => (
-                  <img
-                    key={idx}
-                    src={img}
-                    alt={`thumb-${idx}`}
-                    className={`w-20 h-20 object-cover rounded-md cursor-pointer border ${
-                      selectedImage === img
-                        ? "ring ring-blue-400"
-                        : "border-gray-300"
-                    }`}
-                    onClick={() => setSelectedImage(img)}
-                  />
-                ))}
-              </div>
-              <ScrollBar orientation="horizontal" />
-            </ScrollArea>
-          </Card>
-        </div>
+        <ImageGallery images={product.images} />
         {/* Right: Product Info */}
         <div>
           <p className="text-sm text-gray-500">
@@ -172,7 +137,7 @@ const ProductDetails: React.FC = () => {
           </div>
         </div>
         {/* Reviews Section */}
-        <ReviewSection />
+        <ReviewSection productId={product._id} />
       </div>
     </div>
   );

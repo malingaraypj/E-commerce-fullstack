@@ -19,7 +19,7 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ category, idx }) => {
     error,
   } = useQuery({
     queryKey: ["products", category],
-    queryFn: () => getProductByCategory(category),
+    queryFn: ({ signal }) => getProductByCategory(category, signal),
   });
 
   const [currentIndex, setCurrentIndex] = useState(0);

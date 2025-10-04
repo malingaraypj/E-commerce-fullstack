@@ -65,13 +65,6 @@ const productSchema = new mongoose.Schema(
   }
 );
 
-// Virtual field to populate reviews dynamically
-productSchema.virtual("reviews", {
-  ref: "Review",
-  foreignField: "product",
-  localField: "_id",
-});
-
 productSchema.virtual("reviewCount", {
   ref: "Review",
   foreignField: "product",

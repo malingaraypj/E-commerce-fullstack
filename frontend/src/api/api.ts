@@ -29,7 +29,7 @@ export const getData = async (url: string, signal: AbortSignal) => {
   }
 };
 
-export const postData = async <T = unknown>(url: string, data?: T) => {
+export const postData = async (url: string, data = {}) => {
   const token = localStorage.getItem("token");
 
   const config = {

@@ -23,10 +23,7 @@ export const getAllProducts = async (req, res, next) => {
 };
 
 export const getProduct = getOneFactory(Product, {
-  populate: [
-    { path: "reviews", select: "rating comment user" },
-    { path: "reviewCount" },
-  ],
+  populate: [{ path: "reviewCount" }],
 });
 
 export const updateOneProduct = updateOneFactory(Product);

@@ -3,7 +3,7 @@ export type Rating = 1 | 2 | 3 | 4 | 5;
 
 // The review as it exists in the database, with all metadata
 export interface Review {
-  id: string;
+  _id: string;
   productId: string;
   userId: string;
   user: {
@@ -15,8 +15,8 @@ export interface Review {
   };
   createdAt: string;
   updatedAt?: string;
-  comment?: string; // Add this
-  rating?: number; // Add this
+  comment: string;
+  rating?: number;
 }
 
 // Summary of reviews for a product

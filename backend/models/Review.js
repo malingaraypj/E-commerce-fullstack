@@ -20,9 +20,9 @@ const reviewSchema = new mongoose.Schema(
     },
     rating: {
       type: Number,
-      required: [true, "Rating is required"],
-      min: [1, "Rating must be at least 1"],
-      max: [5, "Rating cannot exceed 5"],
+      // required: [true, "Rating is required"],
+      // min: [1, "Rating must be at least 1"],
+      // max: [5, "Rating cannot exceed 5"],
     },
     responses: [
       {
@@ -47,7 +47,6 @@ const reviewSchema = new mongoose.Schema(
   }
 );
 
-// Prevent duplicate reviews for same user-product pair
 reviewSchema.index({ user: 1, product: 1 }, { unique: true });
 
 export default mongoose.model("Review", reviewSchema);

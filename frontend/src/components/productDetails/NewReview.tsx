@@ -2,29 +2,27 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "../ui/button";
 import { useState } from "react";
 import UserAvatar from "../Global/UserAvatar";
+import { addReview } from "@/api/product";
 
-interface NewReviewProps {
-  addReview: (review: { comment: string }) => void;
-}
-
-const NewReview: React.FC<NewReviewProps> = ({ addReview }) => {
+const NewReview: React.FC<{ onRefetch: () => void; productId: string }> = ({
+  onRefetch,
+  productId,
+}) => {
   const [isActive, setisActive] = useState<boolean>(false);
-  const [newReview, setNewReview] = useState({
-    comment: "",
-  });
+  const [newReview, setNewReview] = useState("");
 
   const handleAddReview = () => {
-    console.log("inside");
-    if (newReview.comment) {
-      addReview(newReview);
-      setNewReview({ comment: "" });
+    if (newReview) {
+      addReview(productId, newReview);
+      onRefetch();
+      setNewReview("");
     }
     setisActive(false);
   };
 
   const handleCancel = () => {
     setisActive(false);
-    setNewReview({ comment: "" });
+    setNewReview("");
   };
 
   return (
@@ -33,11 +31,9 @@ const NewReview: React.FC<NewReviewProps> = ({ addReview }) => {
         <UserAvatar />
         <Textarea
           placeholder="Write your review..."
-          value={newReview.comment}
+          value={newReview}
           onFocus={() => setisActive(true)}
-          onChange={(e) =>
-            setNewReview({ ...newReview, comment: e.target.value })
-          }
+          onChange={(e) => setNewReview(e.target.value)}
         />
       </div>
       {isActive && (
