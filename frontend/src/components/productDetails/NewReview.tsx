@@ -11,9 +11,9 @@ const NewReview: React.FC<{ onRefetch: () => void; productId: string }> = ({
   const [isActive, setisActive] = useState<boolean>(false);
   const [newReview, setNewReview] = useState("");
 
-  const handleAddReview = () => {
+  const handleAddReview = async () => {
     if (newReview) {
-      addReview(productId, newReview);
+      await addReview(productId, newReview);
       onRefetch();
       setNewReview("");
     }
