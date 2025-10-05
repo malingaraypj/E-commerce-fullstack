@@ -9,4 +9,14 @@ export type checkedProduct = {
 export type User = {
   name: string;
   email: string;
+  role: "user" | "admin" | "seller";
+  phone?: string;
+  profilePicture?: string;
+  address?: {
+    street: string;
+    city: string;
+    state: string;
+    zip: string;
+  };
+  cart: checkedProduct[];
 };

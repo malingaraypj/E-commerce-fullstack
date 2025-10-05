@@ -7,6 +7,8 @@ import LoginPage from "./pages/Login.page";
 import ApplySeller from "./pages/ApplySeller.page";
 import ProtectedRoute from "./components/ProtectedRoute";
 import SellerApplicationsPage from "./pages/adminDashBoard";
+import Profile from "./pages/profile";
+import UserProfileUpdatePage from "./pages/profileUpdate";
 
 function App() {
   const router = createBrowserRouter([
@@ -24,6 +26,8 @@ function App() {
         { path: "products/:id", element: <ProductDetails /> },
         { path: "apply-seller", element: <ApplySeller /> },
         { path: "seller-applications", element: <SellerApplicationsPage /> },
+        { path: "profile", element: <Profile /> },
+        { path: "profile/edit", element: <UserProfileUpdatePage /> },
       ],
     },
     {

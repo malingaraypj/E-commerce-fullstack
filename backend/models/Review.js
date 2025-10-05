@@ -47,6 +47,15 @@ const reviewSchema = new mongoose.Schema(
   }
 );
 
+// virtual fields
+reviewSchema.pre("find", function (next) {
+  this.populate({
+    path: "user",
+    select: "name email profileImage",
+  });
+  next();
+});
+
 reviewSchema.index({ user: 1, product: 1 }, { unique: true });
 
 export default mongoose.model("Review", reviewSchema);

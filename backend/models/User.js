@@ -51,6 +51,22 @@ const userSchema = new mongoose.Schema(
         },
       },
     ],
+    profilePicture: {
+      type: String,
+      default:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4g_2Qj3LsNR-iqUAFm6ut2EQVcaou4u2YXw&s",
+    },
+    phone: {
+      type: String,
+      default: "",
+      trim: true,
+    },
+    address: {
+      street: { type: String, default: "", trim: true },
+      city: { type: String, default: "", trim: true },
+      state: { type: String, default: "", trim: true },
+      zip: { type: String, default: "", trim: true },
+    },
   },
   {
     timestamps: true,

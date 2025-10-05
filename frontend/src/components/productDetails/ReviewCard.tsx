@@ -15,14 +15,10 @@ const ReviewCard: React.FC<ReviewProps> = ({ review }) => {
     <div className="border-b pb-2 py-5 px-5 my-5 bg-slate-100 rounded-lg ">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2 justify-between w-full">
-          {review.user.profileImage && (
+          {review.user && (
             <UserAvatar
-              img={review.user.profileImage}
-              label={
-                review.user.lastName
-                  ? `${review.user.firstName} ${review.user.lastName}`
-                  : review.user.firstName
-              }
+              // img={review.user.profileImage}
+              label={review.user.name}
             />
           )}
           <div className="flex flex-col items-end gap-5">

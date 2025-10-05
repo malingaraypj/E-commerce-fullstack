@@ -8,8 +8,7 @@ export interface Review {
   userId: string;
   user: {
     id: string;
-    firstName: string;
-    lastName?: string;
+    name: string;
     profileImage?: string;
     email?: string;
   };

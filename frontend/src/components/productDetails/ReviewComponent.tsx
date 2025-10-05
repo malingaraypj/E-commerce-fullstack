@@ -27,6 +27,8 @@ function ReviewSection({ productId }: { productId: string }) {
     return <LoaderOne />;
   }
 
+  console.log(reviews);
+
   return (
     <div className="md:col-span-2 mt-10 bg-slate-100">
       <Card className="bg-slate-50">

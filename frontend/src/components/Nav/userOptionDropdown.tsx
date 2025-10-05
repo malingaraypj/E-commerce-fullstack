@@ -19,13 +19,15 @@ function UserOptionDropDown() {
       <DropdownMenuContent>
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={() => navigate("/apply-seller")}>
+        <DropdownMenuItem onClick={() => navigate("apply-seller")}>
           Apply for seller
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => navigate("/seller-applications")}>
+        <DropdownMenuItem onClick={() => navigate("seller-applications")}>
           seller applications
         </DropdownMenuItem>
-        <DropdownMenuItem>Profile</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => navigate("profile")}>
+          Profile
+        </DropdownMenuItem>
         <DropdownMenuItem>Billing</DropdownMenuItem>
         <DropdownMenuItem>Team</DropdownMenuItem>
         <DropdownMenuItem>Subscription</DropdownMenuItem>

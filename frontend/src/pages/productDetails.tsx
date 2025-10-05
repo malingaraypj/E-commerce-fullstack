@@ -49,8 +49,6 @@ const ProductDetails: React.FC = () => {
     );
   }
 
-  console.log(product);
-
   const discount =
     product.originalPrice &&
     Math.round(
