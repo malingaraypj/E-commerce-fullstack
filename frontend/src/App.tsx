@@ -10,6 +10,7 @@ import SellerApplicationsPage from "./pages/adminDashBoard";
 import Profile from "./pages/profile";
 import UserProfileUpdatePage from "./pages/profileUpdate";
 import CreateProductPage from "./pages/CreateProduct.page";
+import { NotificationProvider } from "./context/providers/NotificationProvider";
 
 function App() {
   const router = createBrowserRouter([
@@ -42,7 +43,11 @@ function App() {
     },
   ]);
 
-  return <RouterProvider router={router} />;
+  return (
+    <NotificationProvider>
+      <RouterProvider router={router} />
+    </NotificationProvider>
+  );
 }
 
 export default App;
