@@ -5,6 +5,7 @@ import {
   getOneUser,
   getMe,
   updateMe,
+  getMyOrders,
 } from "../controllers/user.controller.js";
 import { restrictTo } from "../services/auth.services.js";
 import { protect } from "../middleware/auth.middleware.js";
@@ -17,6 +18,8 @@ router
   .patch(restrictTo("admin"), updateOneUser)
   .get(getOneUser)
   .delete(restrictTo("admin"), deleteOneUser);
+
+router.get("/my-orders", protect, getMyOrders);
 
 router.route("/me").all(protect).get(getMe).patch(updateMe);
 

@@ -19,3 +19,13 @@ export const updateUserService = async (userId, updateData) => {
 
   return updatedUser;
 };
+
+export const myOrderService = async (userId) => {
+  if (!userId) throw new AppError("No userId provided", 400);
+
+  // check if user exists
+  const user = await User.findById({ _id: userId }).populate("orders");
+  if (!user) throw new AppError("User doesn't exists", 401);
+
+  return user.orders;
+};

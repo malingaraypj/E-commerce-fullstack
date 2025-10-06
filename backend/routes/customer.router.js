@@ -2,6 +2,7 @@ import express from "express";
 import {
   addCheckout,
   applyForSeller,
+  createOrder,
   getMyCheckout,
 } from "./../controllers/customer.controller.js";
 import { protect } from "../middleware/auth.middleware.js";
@@ -12,5 +13,6 @@ Router.use(protect);
 Router.post("/add-checkout/:productId", addCheckout);
 Router.get("/my-checkouts", getMyCheckout);
 Router.post("/applyForSeller", applyForSeller);
+Router.post("/create-order", createOrder);
 
 export default Router;

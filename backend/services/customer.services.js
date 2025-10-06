@@ -1,4 +1,5 @@
 import getOneFactory from "../factory/getOneFactory.js";
+import Order from "../models/Order.js";
 import User from "../models/User.js";
 import AppError from "../utils/AppError.js";
 
@@ -50,4 +51,39 @@ export const getMyCheckoutService = async (userId) => {
   if (!user) throw new AppError("User doesn't exists", 401);
 
   return user.checkedProduct;
+};
+
+export const createOrderService = async (userId, orderData) => {
+  const { cart, shippingAddress, totalAmount } = orderData;
+
+  if (!cart || cart.length === 0 || !shippingAddress || !totalAmount) {
+    throw new AppError("Please provide all required order details.", 400);
+  }
+
+  // Find user
+  const user = await User.findById(userId);
+  if (!user) {
+    throw new AppError("User not found.", 404);
+  }
+
+  // Create the order
+  const newOrder = await Order.create({
+    user: userId,
+    products: cart.map((item) => ({
+      product: item.product._id,
+      quantity: item.count,
+      price: item.product.price,
+    })),
+    totalAmount,
+    shippingAddress,
+  });
+
+  // Add the order to the user's order history
+  user.orders.push(newOrder._id);
+
+  user.checkedProduct = [];
+
+  await user.save({ validateBeforeSave: false });
+
+  return newOrder;
 };

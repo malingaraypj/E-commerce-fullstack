@@ -1,6 +1,8 @@
+import getOneFactory from "../factory/getOneFactory.js";
 import User from "../models/User.js";
 import {
   addCheckoutService,
+  createOrderService,
   getMyCheckoutService,
 } from "../services/customer.services.js";
 import catchAsync from "../utils/catchAsync.js";
@@ -30,4 +32,16 @@ export const getMyCheckout = catchAsync(async (req, res, next) => {
 
 export const applyForSeller = catchAsync(async (req, res, next) => {
   const userId = req.user._id;
+});
+
+export const createOrder = catchAsync(async (req, res, next) => {
+  const userId = req.user._id;
+
+  const result = await createOrderService(userId, req.body);
+
+  res.status(201).json({
+    status: "success",
+    message: "Order placed successfully!",
+    data: result,
+  });
 });

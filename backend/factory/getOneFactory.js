@@ -1,5 +1,6 @@
 import catchAsync from "../utils/catchAsync.js";
 import AppError from "../utils/AppError.js";
+import ApiFeatures from "../utils/apiFeatures.js";
 
 const getOneFactory = (Model, options = {}) => {
   return catchAsync(async (req, res, next) => {
@@ -14,7 +15,13 @@ const getOneFactory = (Model, options = {}) => {
       query = query.populate(options.populate);
     }
 
-    const result = await query;
+    const apiFeatures = new ApiFeatures(query, req.query)
+      .filter()
+      .sort()
+      .fields()
+      .paginate();
+
+    const result = await apiFeatures.query;
 
     if (!result) {
       return next(new AppError("No document found with that ID", 404));

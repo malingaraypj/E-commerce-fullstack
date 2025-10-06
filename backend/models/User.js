@@ -67,6 +67,12 @@ const userSchema = new mongoose.Schema(
       state: { type: String, default: "", trim: true },
       zip: { type: String, default: "", trim: true },
     },
+    orders: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Order",
+      },
+    ],
   },
   {
     timestamps: true,
