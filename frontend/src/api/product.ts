@@ -1,4 +1,10 @@
+import type { Product } from "@/models/product";
 import { baseUrl, getData, postData } from "./api";
+
+export const addNewProduct = async (productData: Partial<Product>) => {
+  const url = `${baseUrl}/products`;
+  return postData(url, productData);
+};
 
 export const getProductByCategory = async (
   category: string,

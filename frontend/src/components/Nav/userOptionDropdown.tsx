@@ -29,7 +29,9 @@ function UserOptionDropDown() {
           Profile
         </DropdownMenuItem>
         <DropdownMenuItem>Billing</DropdownMenuItem>
-        <DropdownMenuItem>Team</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => navigate("create-product")}>
+          Add new Product
+        </DropdownMenuItem>
         <DropdownMenuItem>Subscription</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

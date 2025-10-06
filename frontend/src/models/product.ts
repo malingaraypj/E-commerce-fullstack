@@ -1,5 +1,6 @@
 export type Product = {
   _id: string;
+  owner: string; // User ID of the product owner
   name: string;
   description: string;
   images: string[];
