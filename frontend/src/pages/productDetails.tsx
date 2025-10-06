@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
 // API
@@ -22,6 +22,7 @@ import ImageGallery from "@/components/productDetails/ImageGallery";
 const ProductDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const {
     data: product,
@@ -123,7 +124,11 @@ const ProductDetails: React.FC = () => {
             <Button onClick={() => dispatch(addToCart(product))}>
               Add to Cart
             </Button>
-            <Button variant="secondary" disabled={!product.stock}>
+            <Button
+              onClick={() => navigate("/checkout")}
+              variant="secondary"
+              disabled={!product.stock}
+            >
               Buy Now
             </Button>
           </div>

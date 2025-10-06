@@ -11,6 +11,7 @@ import Profile from "./pages/profile";
 import UserProfileUpdatePage from "./pages/profileUpdate";
 import CreateProductPage from "./pages/CreateProduct.page";
 import { NotificationProvider } from "./context/providers/NotificationProvider";
+import CheckoutPage from "./pages/Checkout.page";
 
 function App() {
   const router = createBrowserRouter([
@@ -31,6 +32,7 @@ function App() {
         { path: "profile", element: <Profile /> },
         { path: "profile/edit", element: <UserProfileUpdatePage /> },
         { path: "create-product", element: <CreateProductPage /> },
+        { path: "checkout", element: <CheckoutPage /> },
       ],
     },
     {
