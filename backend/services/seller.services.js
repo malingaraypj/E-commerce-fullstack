@@ -25,12 +25,11 @@ export const applyToBeSellerService = async (userId, applicationData) => {
   if (!userExists) throw new AppError("User does not exist", 404);
 
   // Check if the user already has a pending application
-  const existingApplication = await Seller.findOne({
-    user: userId,
-    status: "pending",
-  });
-  if (existingApplication)
-    throw new AppError("You already have a pending application", 400);
+  const seller = await Seller.findOne({ user: userId });
+  if (seller && seller.applicationStatus === "approved")
+    throw new AppError("You are already a seller", 400);
+  if (seller && seller.applicationStatus === "pending")
+    throw new AppError("Your application is still pending", 400);
 
   // Build application data dynamically
   let data = { user: userId };
