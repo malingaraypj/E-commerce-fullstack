@@ -1,8 +1,16 @@
+import { newToaster } from "@/components/Notification/newToaster";
 import { QueryClient } from "@tanstack/react-query";
 import axios from "axios";
 
 export const queryClient = new QueryClient();
 export const baseUrl = import.meta.env.VITE_BACKEND_URL;
+
+const toaster = newToaster({
+  positionX: "right",
+  positionY: "bottom",
+  duration: 5,
+  type: "error",
+});
 
 export const getData = async (url: string, signal: AbortSignal) => {
   try {
@@ -23,7 +31,13 @@ export const getData = async (url: string, signal: AbortSignal) => {
     if (axios.isCancel(err)) {
       return;
     }
-    console.error(`Error fetching data from ${url}:`, err);
+
+    const message = axios.isAxiosError(err) && err.response?.data?.message;
+    if (message) {
+      toaster(message);
+      console.error(`Error fetching data from ${url}:`, message);
+      throw new Error(message);
+    }
 
     throw err;
   }
@@ -45,6 +59,12 @@ export const postData = async (url: string, data = {}) => {
 
     return response.data?.data;
   } catch (err) {
+    const message = axios.isAxiosError(err) && err.response?.data?.message;
+    if (message) {
+      toaster(message);
+      console.error(`Error fetching data from ${url}:`, message);
+      throw new Error(message);
+    }
     console.error(`Error fetching data from ${url}:`, err);
     throw err;
   }

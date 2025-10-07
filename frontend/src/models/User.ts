@@ -10,7 +10,7 @@ export type User = {
   _id: string;
   name: string;
   email: string;
-  role: "user" | "admin" | "seller";
+  role: "customer" | "admin" | "seller";
   phone?: string;
   profilePicture?: string;
   address?: {
